@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QLabel" name="labelMeitou">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1920</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>30</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(31, 46, 73);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBackground">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1920</width>
+      <height>1080</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 65, 109);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelXImage">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>76</y>
+      <width>1262</width>
+      <height>780</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(191, 224, 229);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelNImage">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>652</y>
+      <width>252</width>
+      <height>194</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(97, 102, 105);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightMeitou">
+    <property name="geometry">
+     <rect>
+      <x>1282</x>
+      <y>76</y>
+      <width>628</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>25</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 25, 42);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelMeitouText">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>400</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>30</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>旅客随身行李开包系统</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightMeitouText_1">
+    <property name="geometry">
+     <rect>
+      <x>1292</x>
+      <y>76</y>
+      <width>351</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>25</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>RFID编号: 1234567891</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightMeitouText_2">
+    <property name="geometry">
+     <rect>
+      <x>1660</x>
+      <y>76</y>
+      <width>361</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>25</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号: 001</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightBackground_1">
+    <property name="geometry">
+     <rect>
+      <x>1282</x>
+      <y>152</y>
+      <width>628</width>
+      <height>220</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightBackground_2">
+    <property name="geometry">
+     <rect>
+      <x>1282</x>
+      <y>383</y>
+      <width>628</width>
+      <height>220</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightBackground_3">
+    <property name="geometry">
+     <rect>
+      <x>1282</x>
+      <y>614</y>
+      <width>628</width>
+      <height>220</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightImage_1">
+    <property name="geometry">
+     <rect>
+      <x>1292</x>
+      <y>163</y>
+      <width>298</width>
+      <height>198</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightImage_2">
+    <property name="geometry">
+     <rect>
+      <x>1292</x>
+      <y>394</y>
+      <width>298</width>
+      <height>198</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightImage_3">
+    <property name="geometry">
+     <rect>
+      <x>1292</x>
+      <y>625</y>
+      <width>298</width>
+      <height>198</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightText_1">
+    <property name="geometry">
+     <rect>
+      <x>1600</x>
+      <y>163</y>
+      <width>300</width>
+      <height>198</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>25</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(1, 195, 245);</string>
+    </property>
+    <property name="text">
+     <string>第 一 次 检 查</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightText_2">
+    <property name="geometry">
+     <rect>
+      <x>1600</x>
+      <y>394</y>
+      <width>300</width>
+      <height>198</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>25</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(1, 195, 245);</string>
+    </property>
+    <property name="text">
+     <string>第 一 次 检 查</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelRightText_3">
+    <property name="geometry">
+     <rect>
+      <x>1600</x>
+      <y>625</y>
+      <width>300</width>
+      <height>198</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>25</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(1, 195, 245);</string>
+    </property>
+    <property name="text">
+     <string>第 一 次 检 查</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomBackground_1">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>867</y>
+      <width>198</width>
+      <height>202</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomBackground_2">
+    <property name="geometry">
+     <rect>
+      <x>223</x>
+      <y>867</y>
+      <width>198</width>
+      <height>202</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomBackground_3">
+    <property name="geometry">
+     <rect>
+      <x>436</x>
+      <y>867</y>
+      <width>198</width>
+      <height>202</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomBackground_4">
+    <property name="geometry">
+     <rect>
+      <x>648</x>
+      <y>867</y>
+      <width>198</width>
+      <height>202</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomBackground_5">
+    <property name="geometry">
+     <rect>
+      <x>861</x>
+      <y>867</y>
+      <width>198</width>
+      <height>202</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomBackground_6">
+    <property name="geometry">
+     <rect>
+      <x>1074</x>
+      <y>867</y>
+      <width>198</width>
+      <height>202</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomBackground_7">
+    <property name="geometry">
+     <rect>
+      <x>1287</x>
+      <y>867</y>
+      <width>198</width>
+      <height>202</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomImage_8">
+    <property name="geometry">
+     <rect>
+      <x>1509</x>
+      <y>877</y>
+      <width>178</width>
+      <height>136</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomBackground_8">
+    <property name="geometry">
+     <rect>
+      <x>1499</x>
+      <y>867</y>
+      <width>198</width>
+      <height>202</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomBackground_9">
+    <property name="geometry">
+     <rect>
+      <x>1712</x>
+      <y>867</y>
+      <width>198</width>
+      <height>202</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(1, 31, 53);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomImage_1">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>877</y>
+      <width>178</width>
+      <height>136</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomImage_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>877</y>
+      <width>178</width>
+      <height>136</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomImage_3">
+    <property name="geometry">
+     <rect>
+      <x>447</x>
+      <y>877</y>
+      <width>178</width>
+      <height>136</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomImage_4">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>877</y>
+      <width>178</width>
+      <height>136</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomImage_5">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>877</y>
+      <width>178</width>
+      <height>136</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomImage_6">
+    <property name="geometry">
+     <rect>
+      <x>1085</x>
+      <y>877</y>
+      <width>178</width>
+      <height>136</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomImage_7">
+    <property name="geometry">
+     <rect>
+      <x>1297</x>
+      <y>877</y>
+      <width>178</width>
+      <height>136</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomImage_9">
+    <property name="geometry">
+     <rect>
+      <x>1722</x>
+      <y>877</y>
+      <width>178</width>
+      <height>136</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32, 51, 65);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomText_1">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>1013</y>
+      <width>198</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号  001</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomText_2">
+    <property name="geometry">
+     <rect>
+      <x>223</x>
+      <y>1013</y>
+      <width>198</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号  001</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomText_3">
+    <property name="geometry">
+     <rect>
+      <x>436</x>
+      <y>1013</y>
+      <width>198</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号  001</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomText_4">
+    <property name="geometry">
+     <rect>
+      <x>648</x>
+      <y>1013</y>
+      <width>198</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号  001</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomText_5">
+    <property name="geometry">
+     <rect>
+      <x>861</x>
+      <y>1013</y>
+      <width>198</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号  001</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomText_6">
+    <property name="geometry">
+     <rect>
+      <x>1074</x>
+      <y>1013</y>
+      <width>198</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号  001</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomText_7">
+    <property name="geometry">
+     <rect>
+      <x>1287</x>
+      <y>1013</y>
+      <width>198</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号  001</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomText_8">
+    <property name="geometry">
+     <rect>
+      <x>1499</x>
+      <y>1013</y>
+      <width>198</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号  001</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelBottomText_9">
+    <property name="geometry">
+     <rect>
+      <x>1712</x>
+      <y>1013</y>
+      <width>198</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 252, 255);</string>
+    </property>
+    <property name="text">
+     <string>行李框编号  001</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <zorder>labelBackground</zorder>
+   <zorder>labelMeitou</zorder>
+   <zorder>labelXImage</zorder>
+   <zorder>labelNImage</zorder>
+   <zorder>labelRightMeitou</zorder>
+   <zorder>labelMeitouText</zorder>
+   <zorder>labelRightMeitouText_1</zorder>
+   <zorder>labelRightMeitouText_2</zorder>
+   <zorder>labelRightBackground_1</zorder>
+   <zorder>labelRightBackground_2</zorder>
+   <zorder>labelRightBackground_3</zorder>
+   <zorder>labelRightImage_1</zorder>
+   <zorder>labelRightImage_2</zorder>
+   <zorder>labelRightImage_3</zorder>
+   <zorder>labelRightText_1</zorder>
+   <zorder>labelRightText_2</zorder>
+   <zorder>labelRightText_3</zorder>
+   <zorder>labelBottomBackground_1</zorder>
+   <zorder>labelBottomBackground_2</zorder>
+   <zorder>labelBottomBackground_3</zorder>
+   <zorder>labelBottomBackground_4</zorder>
+   <zorder>labelBottomBackground_5</zorder>
+   <zorder>labelBottomBackground_6</zorder>
+   <zorder>labelBottomBackground_7</zorder>
+   <zorder>labelBottomBackground_8</zorder>
+   <zorder>labelBottomBackground_9</zorder>
+   <zorder>labelBottomImage_1</zorder>
+   <zorder>labelBottomImage_2</zorder>
+   <zorder>labelBottomImage_3</zorder>
+   <zorder>labelBottomImage_4</zorder>
+   <zorder>labelBottomImage_5</zorder>
+   <zorder>labelBottomImage_6</zorder>
+   <zorder>labelBottomImage_7</zorder>
+   <zorder>labelBottomImage_8</zorder>
+   <zorder>labelBottomImage_9</zorder>
+   <zorder>labelBottomText_1</zorder>
+   <zorder>labelBottomText_2</zorder>
+   <zorder>labelBottomText_3</zorder>
+   <zorder>labelBottomText_4</zorder>
+   <zorder>labelBottomText_5</zorder>
+   <zorder>labelBottomText_6</zorder>
+   <zorder>labelBottomText_7</zorder>
+   <zorder>labelBottomText_8</zorder>
+   <zorder>labelBottomText_9</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
