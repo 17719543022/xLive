@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,12 +15,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+unix {
+    LIBS += -L$$PWD/../linux -lHTTPServer
+}
+
 SOURCES += \
+    common.cpp \
+    listener.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    settings.cpp
 
 HEADERS += \
-    mainwindow.h
+    HTTPServer/HTTPServerDef.h \
+    HTTPServer/HTTPServerExp.h \
+    common.h \
+    listener.h \
+    mainwindow.h \
+    settings.h
 
 FORMS += \
     mainwindow.ui
