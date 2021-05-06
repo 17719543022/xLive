@@ -70,22 +70,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="labelNImage">
-    <property name="geometry">
-     <rect>
-      <x>1010</x>
-      <y>652</y>
-      <width>252</width>
-      <height>194</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(97, 102, 105);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QLabel" name="labelRightMeitou">
     <property name="geometry">
      <rect>
@@ -146,7 +130,7 @@
      <string notr="true">color: rgb(0, 252, 255);</string>
     </property>
     <property name="text">
-     <string>RFID编号: 1234567891</string>
+     <string>RFID编号: </string>
     </property>
    </widget>
    <widget class="QLabel" name="labelRightMeitouText_2">
@@ -167,7 +151,7 @@
      <string notr="true">color: rgb(0, 252, 255);</string>
     </property>
     <property name="text">
-     <string>行李框编号: 001</string>
+     <string>行李框编号: </string>
     </property>
    </widget>
    <widget class="QLabel" name="labelRightBackground_1">
@@ -842,10 +826,27 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButtonNImage">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>652</y>
+      <width>252</width>
+      <height>194</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(97, 102, 105);
+border: 0;
+image: 0;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>labelBackground</zorder>
    <zorder>labelMeitou</zorder>
    <zorder>labelXImage</zorder>
-   <zorder>labelNImage</zorder>
    <zorder>labelRightMeitou</zorder>
    <zorder>labelMeitouText</zorder>
    <zorder>labelRightMeitouText_1</zorder>
@@ -886,6 +887,7 @@
    <zorder>labelBottomText_7</zorder>
    <zorder>labelBottomText_8</zorder>
    <zorder>labelBottomText_9</zorder>
+   <zorder>pushButtonNImage</zorder>
   </widget>
  </widget>
  <resources/>

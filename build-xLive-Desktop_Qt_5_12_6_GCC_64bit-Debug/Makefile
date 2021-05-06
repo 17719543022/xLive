@@ -891,9 +891,11 @@ moc_mainwindow.cpp: ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QObject \
 		../xLive/HTTPServer/HTTPServerExp.h \
 		../xLive/HTTPServer/HTTPServerDef.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonObject \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonobject.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonvalue.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonDocument \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonvalue.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonArray \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonarray.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkReply \
@@ -1208,9 +1210,11 @@ main.o: ../xLive/main.cpp ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QObject \
 		../xLive/HTTPServer/HTTPServerExp.h \
 		../xLive/HTTPServer/HTTPServerDef.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonObject \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonobject.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonvalue.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonDocument \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonvalue.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonArray \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonarray.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkReply \
@@ -1361,9 +1365,11 @@ mainwindow.o: ../xLive/mainwindow.cpp ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QObject \
 		../xLive/HTTPServer/HTTPServerExp.h \
 		../xLive/HTTPServer/HTTPServerDef.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonObject \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonobject.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonvalue.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonDocument \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonvalue.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonArray \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonarray.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkReply \
@@ -1396,9 +1402,12 @@ mainwindow.o: ../xLive/mainwindow.cpp ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QMetaType \
 		ui_mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QDebug \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QUuid \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/quuid.h \
 		../xLive/settings.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QSettings \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qsettings.h
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qsettings.h \
+		../xLive/common.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../xLive/mainwindow.cpp
 
 settings.o: ../xLive/settings.cpp ../xLive/settings.h \

@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,7 +25,6 @@ public:
     QLabel *labelMeitou;
     QLabel *labelBackground;
     QLabel *labelXImage;
-    QLabel *labelNImage;
     QLabel *labelRightMeitou;
     QLabel *labelMeitouText;
     QLabel *labelRightMeitouText_1;
@@ -65,6 +65,7 @@ public:
     QLabel *labelBottomText_7;
     QLabel *labelBottomText_8;
     QLabel *labelBottomText_9;
+    QPushButton *pushButtonNImage;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -89,10 +90,6 @@ public:
         labelXImage->setObjectName(QString::fromUtf8("labelXImage"));
         labelXImage->setGeometry(QRect(10, 76, 1262, 780));
         labelXImage->setStyleSheet(QString::fromUtf8("background-color: rgb(191, 224, 229);"));
-        labelNImage = new QLabel(centralwidget);
-        labelNImage->setObjectName(QString::fromUtf8("labelNImage"));
-        labelNImage->setGeometry(QRect(1010, 652, 252, 194));
-        labelNImage->setStyleSheet(QString::fromUtf8("background-color: rgb(97, 102, 105);"));
         labelRightMeitou = new QLabel(centralwidget);
         labelRightMeitou->setObjectName(QString::fromUtf8("labelRightMeitou"));
         labelRightMeitou->setGeometry(QRect(1282, 76, 628, 65));
@@ -285,11 +282,16 @@ public:
         labelBottomText_9->setFont(font2);
         labelBottomText_9->setStyleSheet(QString::fromUtf8("color: rgb(0, 252, 255);"));
         labelBottomText_9->setAlignment(Qt::AlignCenter);
+        pushButtonNImage = new QPushButton(centralwidget);
+        pushButtonNImage->setObjectName(QString::fromUtf8("pushButtonNImage"));
+        pushButtonNImage->setGeometry(QRect(1010, 652, 252, 194));
+        pushButtonNImage->setStyleSheet(QString::fromUtf8("background-color: rgb(97, 102, 105);\n"
+"border: 0;\n"
+"image: 0;"));
         MainWindow->setCentralWidget(centralwidget);
         labelBackground->raise();
         labelMeitou->raise();
         labelXImage->raise();
-        labelNImage->raise();
         labelRightMeitou->raise();
         labelMeitouText->raise();
         labelRightMeitouText_1->raise();
@@ -330,6 +332,7 @@ public:
         labelBottomText_7->raise();
         labelBottomText_8->raise();
         labelBottomText_9->raise();
+        pushButtonNImage->raise();
 
         retranslateUi(MainWindow);
 
@@ -342,11 +345,10 @@ public:
         labelMeitou->setText(QString());
         labelBackground->setText(QString());
         labelXImage->setText(QString());
-        labelNImage->setText(QString());
         labelRightMeitou->setText(QString());
         labelMeitouText->setText(QApplication::translate("MainWindow", "\346\227\205\345\256\242\351\232\217\350\272\253\350\241\214\346\235\216\345\274\200\345\214\205\347\263\273\347\273\237", nullptr));
-        labelRightMeitouText_1->setText(QApplication::translate("MainWindow", "RFID\347\274\226\345\217\267: 1234567891", nullptr));
-        labelRightMeitouText_2->setText(QApplication::translate("MainWindow", "\350\241\214\346\235\216\346\241\206\347\274\226\345\217\267: 001", nullptr));
+        labelRightMeitouText_1->setText(QApplication::translate("MainWindow", "RFID\347\274\226\345\217\267: ", nullptr));
+        labelRightMeitouText_2->setText(QApplication::translate("MainWindow", "\350\241\214\346\235\216\346\241\206\347\274\226\345\217\267: ", nullptr));
         labelRightBackground_1->setText(QString());
         labelRightBackground_2->setText(QString());
         labelRightBackground_3->setText(QString());
@@ -383,6 +385,7 @@ public:
         labelBottomText_7->setText(QApplication::translate("MainWindow", "\350\241\214\346\235\216\346\241\206\347\274\226\345\217\267  001", nullptr));
         labelBottomText_8->setText(QApplication::translate("MainWindow", "\350\241\214\346\235\216\346\241\206\347\274\226\345\217\267  001", nullptr));
         labelBottomText_9->setText(QApplication::translate("MainWindow", "\350\241\214\346\235\216\346\241\206\347\274\226\345\217\267  001", nullptr));
+        pushButtonNImage->setText(QString());
     } // retranslateUi
 
 };
