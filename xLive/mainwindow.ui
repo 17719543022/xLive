@@ -58,7 +58,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>76</y>
+      <y>75</y>
       <width>1262</width>
       <height>780</height>
      </rect>
@@ -74,7 +74,7 @@
     <property name="geometry">
      <rect>
       <x>1282</x>
-      <y>76</y>
+      <y>75</y>
       <width>628</width>
       <height>65</height>
      </rect>
@@ -116,7 +116,7 @@
     <property name="geometry">
      <rect>
       <x>1292</x>
-      <y>76</y>
+      <y>75</y>
       <width>351</width>
       <height>65</height>
      </rect>
@@ -137,8 +137,8 @@
     <property name="geometry">
      <rect>
       <x>1660</x>
-      <y>76</y>
-      <width>361</width>
+      <y>75</y>
+      <width>250</width>
       <height>65</height>
      </rect>
     </property>
@@ -154,181 +154,13 @@
      <string>行李框编号: </string>
     </property>
    </widget>
-   <widget class="QLabel" name="labelRightBackground_1">
-    <property name="geometry">
-     <rect>
-      <x>1282</x>
-      <y>152</y>
-      <width>628</width>
-      <height>220</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(1, 31, 53);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightBackground_2">
-    <property name="geometry">
-     <rect>
-      <x>1282</x>
-      <y>383</y>
-      <width>628</width>
-      <height>220</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(1, 31, 53);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightBackground_3">
-    <property name="geometry">
-     <rect>
-      <x>1282</x>
-      <y>614</y>
-      <width>628</width>
-      <height>220</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(1, 31, 53);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightImage_1">
-    <property name="geometry">
-     <rect>
-      <x>1292</x>
-      <y>163</y>
-      <width>298</width>
-      <height>198</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(32, 51, 65);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightImage_2">
-    <property name="geometry">
-     <rect>
-      <x>1292</x>
-      <y>394</y>
-      <width>298</width>
-      <height>198</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(32, 51, 65);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightImage_3">
-    <property name="geometry">
-     <rect>
-      <x>1292</x>
-      <y>625</y>
-      <width>298</width>
-      <height>198</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(32, 51, 65);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightText_1">
-    <property name="geometry">
-     <rect>
-      <x>1600</x>
-      <y>163</y>
-      <width>300</width>
-      <height>198</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>25</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(1, 195, 245);</string>
-    </property>
-    <property name="text">
-     <string>第 一 次 检 查</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightText_2">
-    <property name="geometry">
-     <rect>
-      <x>1600</x>
-      <y>394</y>
-      <width>300</width>
-      <height>198</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>25</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(1, 195, 245);</string>
-    </property>
-    <property name="text">
-     <string>第 一 次 检 查</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightText_3">
-    <property name="geometry">
-     <rect>
-      <x>1600</x>
-      <y>625</y>
-      <width>300</width>
-      <height>198</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>25</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(1, 195, 245);</string>
-    </property>
-    <property name="text">
-     <string>第 一 次 检 查</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="labelBottomBackground_1">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>867</y>
+      <y>865</y>
       <width>198</width>
-      <height>202</height>
+      <height>205</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -342,9 +174,9 @@
     <property name="geometry">
      <rect>
       <x>223</x>
-      <y>867</y>
+      <y>865</y>
       <width>198</width>
-      <height>202</height>
+      <height>205</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -358,9 +190,9 @@
     <property name="geometry">
      <rect>
       <x>436</x>
-      <y>867</y>
+      <y>865</y>
       <width>198</width>
-      <height>202</height>
+      <height>205</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -374,9 +206,9 @@
     <property name="geometry">
      <rect>
       <x>648</x>
-      <y>867</y>
+      <y>865</y>
       <width>198</width>
-      <height>202</height>
+      <height>205</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -390,9 +222,9 @@
     <property name="geometry">
      <rect>
       <x>861</x>
-      <y>867</y>
+      <y>865</y>
       <width>198</width>
-      <height>202</height>
+      <height>205</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -406,9 +238,9 @@
     <property name="geometry">
      <rect>
       <x>1074</x>
-      <y>867</y>
+      <y>865</y>
       <width>198</width>
-      <height>202</height>
+      <height>205</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -422,9 +254,9 @@
     <property name="geometry">
      <rect>
       <x>1287</x>
-      <y>867</y>
+      <y>865</y>
       <width>198</width>
-      <height>202</height>
+      <height>205</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -438,9 +270,9 @@
     <property name="geometry">
      <rect>
       <x>1509</x>
-      <y>877</y>
+      <y>875</y>
       <width>178</width>
-      <height>136</height>
+      <height>139</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -454,9 +286,9 @@
     <property name="geometry">
      <rect>
       <x>1499</x>
-      <y>867</y>
+      <y>865</y>
       <width>198</width>
-      <height>202</height>
+      <height>205</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -470,9 +302,9 @@
     <property name="geometry">
      <rect>
       <x>1712</x>
-      <y>867</y>
+      <y>865</y>
       <width>198</width>
-      <height>202</height>
+      <height>205</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -486,9 +318,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>877</y>
+      <y>875</y>
       <width>178</width>
-      <height>136</height>
+      <height>139</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -501,10 +333,10 @@
    <widget class="QLabel" name="labelBottomImage_2">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>877</y>
+      <x>233</x>
+      <y>875</y>
       <width>178</width>
-      <height>136</height>
+      <height>139</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -517,10 +349,10 @@
    <widget class="QLabel" name="labelBottomImage_3">
     <property name="geometry">
      <rect>
-      <x>447</x>
-      <y>877</y>
+      <x>446</x>
+      <y>875</y>
       <width>178</width>
-      <height>136</height>
+      <height>139</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -533,10 +365,10 @@
    <widget class="QLabel" name="labelBottomImage_4">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>877</y>
+      <x>658</x>
+      <y>875</y>
       <width>178</width>
-      <height>136</height>
+      <height>139</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -549,10 +381,10 @@
    <widget class="QLabel" name="labelBottomImage_5">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>877</y>
+      <x>871</x>
+      <y>875</y>
       <width>178</width>
-      <height>136</height>
+      <height>139</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -565,10 +397,10 @@
    <widget class="QLabel" name="labelBottomImage_6">
     <property name="geometry">
      <rect>
-      <x>1085</x>
-      <y>877</y>
+      <x>1084</x>
+      <y>875</y>
       <width>178</width>
-      <height>136</height>
+      <height>139</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -582,9 +414,9 @@
     <property name="geometry">
      <rect>
       <x>1297</x>
-      <y>877</y>
+      <y>875</y>
       <width>178</width>
-      <height>136</height>
+      <height>139</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -598,9 +430,9 @@
     <property name="geometry">
      <rect>
       <x>1722</x>
-      <y>877</y>
+      <y>875</y>
       <width>178</width>
-      <height>136</height>
+      <height>139</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -614,7 +446,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>1013</y>
+      <y>1014</y>
       <width>198</width>
       <height>56</height>
      </rect>
@@ -638,7 +470,7 @@
     <property name="geometry">
      <rect>
       <x>223</x>
-      <y>1013</y>
+      <y>1014</y>
       <width>198</width>
       <height>56</height>
      </rect>
@@ -662,7 +494,7 @@
     <property name="geometry">
      <rect>
       <x>436</x>
-      <y>1013</y>
+      <y>1014</y>
       <width>198</width>
       <height>56</height>
      </rect>
@@ -686,7 +518,7 @@
     <property name="geometry">
      <rect>
       <x>648</x>
-      <y>1013</y>
+      <y>1014</y>
       <width>198</width>
       <height>56</height>
      </rect>
@@ -710,7 +542,7 @@
     <property name="geometry">
      <rect>
       <x>861</x>
-      <y>1013</y>
+      <y>1014</y>
       <width>198</width>
       <height>56</height>
      </rect>
@@ -734,7 +566,7 @@
     <property name="geometry">
      <rect>
       <x>1074</x>
-      <y>1013</y>
+      <y>1014</y>
       <width>198</width>
       <height>56</height>
      </rect>
@@ -758,7 +590,7 @@
     <property name="geometry">
      <rect>
       <x>1287</x>
-      <y>1013</y>
+      <y>1014</y>
       <width>198</width>
       <height>56</height>
      </rect>
@@ -782,7 +614,7 @@
     <property name="geometry">
      <rect>
       <x>1499</x>
-      <y>1013</y>
+      <y>1014</y>
       <width>198</width>
       <height>56</height>
      </rect>
@@ -806,7 +638,7 @@
     <property name="geometry">
      <rect>
       <x>1712</x>
-      <y>1013</y>
+      <y>1014</y>
       <width>198</width>
       <height>56</height>
      </rect>
@@ -830,7 +662,7 @@
     <property name="geometry">
      <rect>
       <x>1010</x>
-      <y>652</y>
+      <y>651</y>
       <width>252</width>
       <height>194</height>
      </rect>
@@ -844,6 +676,24 @@ image: 0;</string>
      <string/>
     </property>
    </widget>
+   <widget class="QTableWidget" name="tableWidgetRight">
+    <property name="geometry">
+     <rect>
+      <x>1282</x>
+      <y>145</y>
+      <width>628</width>
+      <height>704</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: 0;
+border: 0;
+background-color: rgb(1, 65, 109);</string>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+   </widget>
    <zorder>labelBackground</zorder>
    <zorder>labelMeitou</zorder>
    <zorder>labelXImage</zorder>
@@ -851,15 +701,6 @@ image: 0;</string>
    <zorder>labelMeitouText</zorder>
    <zorder>labelRightMeitouText_1</zorder>
    <zorder>labelRightMeitouText_2</zorder>
-   <zorder>labelRightBackground_1</zorder>
-   <zorder>labelRightBackground_2</zorder>
-   <zorder>labelRightBackground_3</zorder>
-   <zorder>labelRightImage_1</zorder>
-   <zorder>labelRightImage_2</zorder>
-   <zorder>labelRightImage_3</zorder>
-   <zorder>labelRightText_1</zorder>
-   <zorder>labelRightText_2</zorder>
-   <zorder>labelRightText_3</zorder>
    <zorder>labelBottomBackground_1</zorder>
    <zorder>labelBottomBackground_2</zorder>
    <zorder>labelBottomBackground_3</zorder>
@@ -888,6 +729,7 @@ image: 0;</string>
    <zorder>labelBottomText_8</zorder>
    <zorder>labelBottomText_9</zorder>
    <zorder>pushButtonNImage</zorder>
+   <zorder>tableWidgetRight</zorder>
   </widget>
  </widget>
  <resources/>

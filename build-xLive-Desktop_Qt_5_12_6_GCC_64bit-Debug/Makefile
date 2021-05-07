@@ -926,6 +926,24 @@ moc_mainwindow.cpp: ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QMetaType \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qvalidator.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qslider.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qstyle.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qrubberband.h \
 		moc_predefs.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc
 	/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/liuyong/xLive/build-xLive-Desktop_Qt_5_12_6_GCC_64bit-Debug/moc_predefs.h -I/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/liuyong/xLive/xLive -I/opt/Qt5.12.6/5.12.6/gcc_64/include -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../xLive/mainwindow.h -o moc_mainwindow.cpp
@@ -1245,6 +1263,24 @@ main.o: ../xLive/main.cpp ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QMetaType \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qvalidator.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qslider.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qstyle.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qrubberband.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1400,6 +1436,24 @@ mainwindow.o: ../xLive/mainwindow.cpp ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QMetaType \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qvalidator.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qslider.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qstyle.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qrubberband.h \
 		ui_mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QDebug \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QUuid \

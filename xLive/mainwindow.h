@@ -7,6 +7,7 @@
 #include "QJsonDocument"
 #include <QJsonArray>
 #include <QNetworkReply>
+#include <QTableWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,12 +24,18 @@ public:
 private:
     QPixmap getQPixmapSync(QString str);
 
+    void doSetPixmap();
+
+    void fillTableTotally(QTableWidget *table, QJsonArray array);
+
 private slots:
     void onNewSerialData(QString strRequest);
 
     void postResponse(QNetworkReply* reply);
 
     void on_pushButtonNImage_clicked();
+
+    void on_cellClicked(int row, int column);
 
 private:
     Ui::MainWindow *ui;

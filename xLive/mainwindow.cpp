@@ -27,6 +27,16 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "server fail";
     }
 
+    ui->tableWidgetRight->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableWidgetRight->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableWidgetRight->verticalHeader()->setVisible(false);
+    ui->tableWidgetRight->horizontalHeader()->setVisible(false);
+    ui->tableWidgetRight->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    ui->tableWidgetRight->setStyleSheet("border: none; background-color: rgb(1, 65, 109);");
+    ui->tableWidgetRight->setShowGrid(false);
+    ui->tableWidgetRight->setColumnCount(1);
+    ui->tableWidgetRight->setColumnWidth(0, 766);
+
     connect(&listener, &Listener::newSerialData, this, &MainWindow::onNewSerialData);
 }
 
@@ -53,6 +63,104 @@ QPixmap MainWindow::getQPixmapSync(QString str)
     pixmap.loadFromData(byteArray);
 
     return pixmap;
+}
+
+void MainWindow::doSetPixmap()
+{
+    if (isBeforeAfterChanged) {
+        QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
+
+        ui->pushButtonNImage->setIcon(QIcon(afterPixmap.scaled(ui->pushButtonNImage->width()
+                                                               , ui->pushButtonNImage->height()
+                                                               , Qt::IgnoreAspectRatio
+                                                               , Qt::SmoothTransformation)));
+        ui->pushButtonNImage->setIconSize(QSize(252, 194));
+
+        QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
+
+        beforePixmap = beforePixmap.scaled(ui->labelXImage->width()
+                                           , ui->labelXImage->height()
+                                           , Qt::IgnoreAspectRatio
+                                           , Qt::SmoothTransformation);
+        ui->labelXImage->setPixmap(beforePixmap);
+    } else {
+        QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
+
+        afterPixmap = afterPixmap.scaled(ui->labelXImage->width()
+                                         , ui->labelXImage->height()
+                                         , Qt::IgnoreAspectRatio
+                                         , Qt::SmoothTransformation);
+        ui->labelXImage->setPixmap(afterPixmap);
+
+        QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
+
+        ui->pushButtonNImage->setIcon(QIcon(beforePixmap.scaled(ui->pushButtonNImage->width()
+                                                                , ui->pushButtonNImage->height()
+                                                                , Qt::IgnoreAspectRatio
+                                                                , Qt::SmoothTransformation)));
+        ui->pushButtonNImage->setIconSize(QSize(252, 194));
+    }
+}
+
+void MainWindow::fillTableTotally(QTableWidget *table, QJsonArray array)
+{
+    for (int i = 0; i < array.size(); i++) {
+        QWidget *itemWidget = new QWidget();
+        itemWidget->resize(table->width(), 230);
+
+        QLabel *labelBackground = new QLabel(itemWidget);
+        labelBackground->setGeometry(0, 0, table->width(), 230);
+        labelBackground->setFixedSize(628, 230);
+        labelBackground->setStyleSheet("image: 0; border: 0; background-color: rgb(1, 65, 109);");
+
+        QLabel *labelRightBackground = new QLabel(itemWidget);
+        labelRightBackground->setGeometry(0, 5, table->width(), 220);
+        labelRightBackground->setFixedSize(628, 220);
+        labelRightBackground->setStyleSheet("image: 0; border: 0; background-color: rgb(1, 31, 53);");
+
+        QLabel *labelRightImage = new QLabel(itemWidget);
+        labelRightImage->setGeometry(10, 15, 298, 200);
+        labelRightImage->setFixedSize(298, 200);
+        QPixmap afterPixmap = getQPixmapSync(array.at(i).toObject().value("details").toObject().value("afterXPhotoPath").toString());
+        afterPixmap = afterPixmap.scaled(298
+                                         , 200
+                                         , Qt::IgnoreAspectRatio
+                                         , Qt::SmoothTransformation);
+        labelRightImage->setPixmap(afterPixmap);
+
+        QLabel *labelRightText = new QLabel(itemWidget);
+        labelRightText->setGeometry(318, 15, 300, 200);
+        if (i == 0) {
+            labelRightText->setText("第 一 次 检 查");
+        } else if (i == 1) {
+            labelRightText->setText("第 二 次 检 查");
+        } else if (i == 2) {
+            labelRightText->setText("第 三 次 检 查");
+        } else if (i == 3) {
+            labelRightText->setText("第 四 次 检 查");
+        } else if (i == 4) {
+            labelRightText->setText("第 五 次 检 查");
+        } else if (i == 5) {
+            labelRightText->setText("第 六 次 检 查");
+        } else if (i == 6) {
+            labelRightText->setText("第 七 次 检 查");
+        } else if (i == 7) {
+            labelRightText->setText("第 八 次 检 查");
+        } else if (i == 8) {
+            labelRightText->setText("第 九 次 检 查");
+        } else if (i == 9) {
+            labelRightText->setText("第 十 次 检 查");
+        }
+        labelRightText->setFixedSize(300, 200);
+        labelRightText->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        labelRightText->setStyleSheet("image: 0; border: 0; background: transparent; font: 25pt; color: rgb(1, 195, 245);");
+
+        ui->tableWidgetRight->insertRow(i);
+        ui->tableWidgetRight->setRowHeight(i, 230);
+        ui->tableWidgetRight->setCellWidget(i, 0, itemWidget);
+    }
+
+    connect(ui->tableWidgetRight, SIGNAL(cellClicked(int, int)), this, SLOT(on_cellClicked(int, int)));
 }
 
 void MainWindow::postResponse(QNetworkReply* reply)
@@ -93,47 +201,13 @@ void MainWindow::postResponse(QNetworkReply* reply)
                         ui->labelRightMeitouText_1->setText("RFID编号: " + array.at(0).toObject().value("rfid").toString());
                         ui->labelRightMeitouText_2->setText("行李框编号: " + array.at(0).toObject().value("boxNo").toString());
 
-                        afterXPhotoPath = array.at(array.size() - 1).toObject().value("details").toObject().value("afterXPhotoPath").toString();
-                        beforeXPhotoPath = array.at(array.size() - 1).toObject().value("details").toObject().value("beforeXPhotoPath").toString();
+                        afterXPhotoPath = array.at(0).toObject().value("details").toObject().value("afterXPhotoPath").toString();
+                        beforeXPhotoPath = array.at(0).toObject().value("details").toObject().value("beforeXPhotoPath").toString();
 
-                        if (isBeforeAfterChanged) {
-                            QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
-
-                            ui->pushButtonNImage->setIcon(QIcon(afterPixmap.scaled(ui->pushButtonNImage->width()
-                                                                                   , ui->pushButtonNImage->height()
-                                                                                   , Qt::IgnoreAspectRatio
-                                                                                   , Qt::SmoothTransformation)));
-                            ui->pushButtonNImage->setIconSize(QSize(252, 194));
-
-                            QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
-
-                            beforePixmap = beforePixmap.scaled(ui->labelXImage->width()
-                                                               , ui->labelXImage->height()
-                                                               , Qt::IgnoreAspectRatio
-                                                               , Qt::SmoothTransformation);
-                            ui->labelXImage->setPixmap(beforePixmap);
-                        } else {
-                            QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
-
-                            afterPixmap = afterPixmap.scaled(ui->labelXImage->width()
-                                                             , ui->labelXImage->height()
-                                                             , Qt::IgnoreAspectRatio
-                                                             , Qt::SmoothTransformation);
-                            ui->labelXImage->setPixmap(afterPixmap);
-
-                            QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
-
-                            ui->pushButtonNImage->setIcon(QIcon(beforePixmap.scaled(ui->pushButtonNImage->width()
-                                                                                    , ui->pushButtonNImage->height()
-                                                                                    , Qt::IgnoreAspectRatio
-                                                                                    , Qt::SmoothTransformation)));
-                            ui->pushButtonNImage->setIconSize(QSize(252, 194));
-                        }
+                        this->doSetPixmap();
                     }
 
-                    for (int i = 0; i < array.size(); i++) {
-
-                    }
+                    this->fillTableTotally(ui->tableWidgetRight, array);
                 }
             }
         }
@@ -190,37 +264,11 @@ void MainWindow::on_pushButtonNImage_clicked()
 {
     isBeforeAfterChanged = !isBeforeAfterChanged;
 
-    if (isBeforeAfterChanged) {
-        QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
+    this->doSetPixmap();
+}
 
-        ui->pushButtonNImage->setIcon(QIcon(afterPixmap.scaled(ui->pushButtonNImage->width()
-                                                               , ui->pushButtonNImage->height()
-                                                               , Qt::IgnoreAspectRatio
-                                                               , Qt::SmoothTransformation)));
-        ui->pushButtonNImage->setIconSize(QSize(252, 194));
-
-        QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
-
-        beforePixmap = beforePixmap.scaled(ui->labelXImage->width()
-                                           , ui->labelXImage->height()
-                                           , Qt::IgnoreAspectRatio
-                                           , Qt::SmoothTransformation);
-        ui->labelXImage->setPixmap(beforePixmap);
-    } else {
-        QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
-
-        afterPixmap = afterPixmap.scaled(ui->labelXImage->width()
-                                         , ui->labelXImage->height()
-                                         , Qt::IgnoreAspectRatio
-                                         , Qt::SmoothTransformation);
-        ui->labelXImage->setPixmap(afterPixmap);
-
-        QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
-
-        ui->pushButtonNImage->setIcon(QIcon(beforePixmap.scaled(ui->pushButtonNImage->width()
-                                                                , ui->pushButtonNImage->height()
-                                                                , Qt::IgnoreAspectRatio
-                                                                , Qt::SmoothTransformation)));
-        ui->pushButtonNImage->setIconSize(QSize(252, 194));
-    }
+void MainWindow::on_cellClicked(int row, int column)
+{
+    qDebug() << "row: " << row;
+    qDebug() << "column: " << column;
 }
