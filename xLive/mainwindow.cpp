@@ -269,6 +269,21 @@ void MainWindow::on_pushButtonNImage_clicked()
 
 void MainWindow::on_cellClicked(int row, int column)
 {
-    qDebug() << "row: " << row;
-    qDebug() << "column: " << column;
+    Q_UNUSED(column)
+
+    QJsonObject obj = document.object();
+
+    if (obj.contains("results")) {
+        QJsonValue results = obj.value("results");
+        if (results.isArray()) {
+            array = results.toArray();
+
+            if (array.size() > row) {
+                afterXPhotoPath = array.at(row).toObject().value("details").toObject().value("afterXPhotoPath").toString();
+                beforeXPhotoPath = array.at(row).toObject().value("details").toObject().value("beforeXPhotoPath").toString();
+
+                this->doSetPixmap();
+            }
+        }
+    }
 }
