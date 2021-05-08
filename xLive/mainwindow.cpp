@@ -10,6 +10,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , documents(QList<QJsonDocument>())
     , afterXPhotoPath(QString())
     , beforeXPhotoPath(QString())
     , isBeforeAfterChanged(false)
@@ -36,6 +37,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableWidgetRight->setShowGrid(false);
     ui->tableWidgetRight->setColumnCount(1);
     ui->tableWidgetRight->setColumnWidth(0, 766);
+
+    ui->tableWidgetBottom->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableWidgetBottom->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableWidgetBottom->verticalHeader()->setVisible(false);
+    ui->tableWidgetBottom->horizontalHeader()->setVisible(false);
+    ui->tableWidgetBottom->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    ui->tableWidgetBottom->setStyleSheet("border: 0; background-color: rgb(1, 65, 109);");
+    ui->tableWidgetBottom->setShowGrid(false);
+    ui->tableWidgetBottom->setRowCount(1);
+    ui->tableWidgetBottom->setRowHeight(0, 205);
 
     connect(&listener, &Listener::newSerialData, this, &MainWindow::onNewSerialData);
 }
@@ -102,7 +113,7 @@ void MainWindow::doSetPixmap()
     }
 }
 
-void MainWindow::fillTableTotally(QTableWidget *table, QJsonArray array)
+void MainWindow::fillRightTableTotally(QTableWidget *table, QJsonArray array)
 {
     for (int i = 0; i < array.size(); i++) {
         QWidget *itemWidget = new QWidget();
@@ -163,6 +174,40 @@ void MainWindow::fillTableTotally(QTableWidget *table, QJsonArray array)
     connect(ui->tableWidgetRight, SIGNAL(cellClicked(int, int)), this, SLOT(on_cellClicked(int, int)));
 }
 
+void MainWindow::fillBottomTableGradually()
+{
+    for (int i = 0; i < documents.size(); i++) {
+        QWidget *itemWidget = new QWidget();
+        itemWidget->resize(208, 205);
+
+        QLabel *labelBackground = new QLabel(itemWidget);
+        labelBackground->setGeometry(5, 0, 208, ui->tableWidgetBottom->height());
+        labelBackground->setFixedSize(628, 230);
+        labelBackground->setStyleSheet("image: 0; border: 0; background-color: rgb(1, 65, 109);");
+
+        QLabel *labelBottomBackground = new QLabel(itemWidget);
+        labelBottomBackground->setGeometry(5, 0, 198, ui->tableWidgetBottom->height());
+        labelBottomBackground->setFixedSize(198, ui->tableWidgetBottom->height());
+        labelBottomBackground->setStyleSheet("image: 0; border: 0; background-color: rgb(1, 31, 53);");
+
+        QLabel *labelBottomImage = new QLabel(itemWidget);
+        labelBottomImage->setGeometry(15, 10, 178, 139);
+        labelBottomImage->setFixedSize(178, 139);
+        labelBottomImage->setStyleSheet("image: 0; border: 0; background-color: rgb(32, 51, 65);");
+
+        QLabel *labelBottomText = new QLabel(itemWidget);
+        labelBottomText->setGeometry(5, 149, 198, 56);
+        labelBottomText->setFixedSize(198, 56);
+        labelBottomText->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        labelBottomText->setStyleSheet("image: 0; border: 0; background: transparent; font: 17pt; color: rgb(0, 252, 255);");
+        labelBottomText->setText("行李框编号" + documents.at(i).object().value("results").toArray().at(0).toObject().value("boxNo").toString());
+
+        ui->tableWidgetBottom->insertColumn(i);
+        ui->tableWidgetBottom->setColumnWidth(i, 208);
+        ui->tableWidgetBottom->setCellWidget(0, i, itemWidget);
+    }
+}
+
 void MainWindow::postResponse(QNetworkReply* reply)
 {
     QVariant status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
@@ -195,7 +240,7 @@ void MainWindow::postResponse(QNetworkReply* reply)
             if (obj.contains("results")) {
                 QJsonValue results = obj.value("results");
                 if (results.isArray()) {
-                    array = results.toArray();
+                    QJsonArray array = results.toArray();
 
                     if (array.size() > 0) {
                         ui->labelRightMeitouText_1->setText("RFID编号: " + array.at(0).toObject().value("rfid").toString());
@@ -207,7 +252,10 @@ void MainWindow::postResponse(QNetworkReply* reply)
                         this->doSetPixmap();
                     }
 
-                    this->fillTableTotally(ui->tableWidgetRight, array);
+                    this->fillRightTableTotally(ui->tableWidgetRight, array);
+
+                    documents.append(document);
+                    this->fillBottomTableGradually();
                 }
             }
         }
@@ -276,7 +324,7 @@ void MainWindow::on_cellClicked(int row, int column)
     if (obj.contains("results")) {
         QJsonValue results = obj.value("results");
         if (results.isArray()) {
-            array = results.toArray();
+            QJsonArray array = results.toArray();
 
             if (array.size() > row) {
                 afterXPhotoPath = array.at(row).toObject().value("details").toObject().value("afterXPhotoPath").toString();

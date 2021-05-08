@@ -19,6 +19,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
 
 private:
@@ -26,7 +27,9 @@ private:
 
     void doSetPixmap();
 
-    void fillTableTotally(QTableWidget *table, QJsonArray array);
+    void fillRightTableTotally(QTableWidget *table, QJsonArray array);
+
+    void fillBottomTableGradually();
 
 private slots:
     void onNewSerialData(QString strRequest);
@@ -41,7 +44,7 @@ private:
     Ui::MainWindow *ui;
     Listener listener;
     QJsonDocument document;
-    QJsonArray array;
+    QList<QJsonDocument> documents;
 
     QString afterXPhotoPath;
     QString beforeXPhotoPath;
