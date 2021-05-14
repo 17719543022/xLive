@@ -11,8 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , documents(QList<QJsonDocument>())
-    , afterXPhotoPath(QString())
-    , beforeXPhotoPath(QString())
+    , rowRight(0)
     , isBeforeAfterChanged(false)
 {
     ui->setupUi(this);
@@ -49,6 +48,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableWidgetBottom->setRowHeight(0, 205);
 
     connect(&listener, &Listener::newSerialData, this, &MainWindow::onNewSerialData);
+    connect(ui->tableWidgetRight, SIGNAL(cellClicked(int, int)), this, SLOT(on_rowClicked(int, int)));
+    connect(ui->tableWidgetBottom, SIGNAL(cellClicked(int, int)), this, SLOT(on_columnClicked(int, int)));
 }
 
 MainWindow::~MainWindow()
@@ -76,45 +77,60 @@ QPixmap MainWindow::getQPixmapSync(QString str)
     return pixmap;
 }
 
-void MainWindow::doSetPixmap()
+void MainWindow::doSetPixmap(QJsonArray array, int row)
 {
-    if (isBeforeAfterChanged) {
-        QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
+    if (array.size() > row) {
+        QString afterXPhotoPath = array.at(row).toObject().value("details").toObject().value("afterXPhotoPath").toString();
+        QString beforeXPhotoPath = array.at(row).toObject().value("details").toObject().value("beforeXPhotoPath").toString();
 
-        ui->pushButtonNImage->setIcon(QIcon(afterPixmap.scaled(ui->pushButtonNImage->width()
-                                                               , ui->pushButtonNImage->height()
-                                                               , Qt::IgnoreAspectRatio
-                                                               , Qt::SmoothTransformation)));
-        ui->pushButtonNImage->setIconSize(QSize(252, 194));
+        if (isBeforeAfterChanged) {
+            QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
 
-        QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
+            ui->pushButtonNImage->setIcon(QIcon(afterPixmap.scaled(ui->pushButtonNImage->width()
+                                                                   , ui->pushButtonNImage->height()
+                                                                   , Qt::IgnoreAspectRatio
+                                                                   , Qt::SmoothTransformation)));
+            ui->pushButtonNImage->setIconSize(QSize(252, 194));
 
-        beforePixmap = beforePixmap.scaled(ui->labelXImage->width()
-                                           , ui->labelXImage->height()
-                                           , Qt::IgnoreAspectRatio
-                                           , Qt::SmoothTransformation);
-        ui->labelXImage->setPixmap(beforePixmap);
-    } else {
-        QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
+            QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
 
-        afterPixmap = afterPixmap.scaled(ui->labelXImage->width()
-                                         , ui->labelXImage->height()
-                                         , Qt::IgnoreAspectRatio
-                                         , Qt::SmoothTransformation);
-        ui->labelXImage->setPixmap(afterPixmap);
+            beforePixmap = beforePixmap.scaled(ui->labelXImage->width()
+                                               , ui->labelXImage->height()
+                                               , Qt::IgnoreAspectRatio
+                                               , Qt::SmoothTransformation);
+            ui->labelXImage->setPixmap(beforePixmap);
+        } else {
+            QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
 
-        QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
+            afterPixmap = afterPixmap.scaled(ui->labelXImage->width()
+                                             , ui->labelXImage->height()
+                                             , Qt::IgnoreAspectRatio
+                                             , Qt::SmoothTransformation);
+            ui->labelXImage->setPixmap(afterPixmap);
 
-        ui->pushButtonNImage->setIcon(QIcon(beforePixmap.scaled(ui->pushButtonNImage->width()
-                                                                , ui->pushButtonNImage->height()
-                                                                , Qt::IgnoreAspectRatio
-                                                                , Qt::SmoothTransformation)));
-        ui->pushButtonNImage->setIconSize(QSize(252, 194));
+            QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
+
+            ui->pushButtonNImage->setIcon(QIcon(beforePixmap.scaled(ui->pushButtonNImage->width()
+                                                                    , ui->pushButtonNImage->height()
+                                                                    , Qt::IgnoreAspectRatio
+                                                                    , Qt::SmoothTransformation)));
+            ui->pushButtonNImage->setIconSize(QSize(252, 194));
+        }
     }
 }
 
 void MainWindow::fillRightTableTotally(QTableWidget *table, QJsonArray array)
 {
+    table->scrollToTop();
+    while (table->rowCount() > 0) {
+        table->removeRow(0);
+    }
+
+    if (array.size() > 0) {
+        ui->labelRightMeitouText_1->setText("RFID编号: " + array.at(0).toObject().value("rfid").toString());
+        ui->labelRightMeitouText_2->setText("行李框编号: " + array.at(0).toObject().value("boxNo").toString());
+    }
+
     for (int i = 0; i < array.size(); i++) {
         QWidget *itemWidget = new QWidget();
         itemWidget->resize(table->width(), 230);
@@ -170,19 +186,21 @@ void MainWindow::fillRightTableTotally(QTableWidget *table, QJsonArray array)
         ui->tableWidgetRight->setRowHeight(i, 230);
         ui->tableWidgetRight->setCellWidget(i, 0, itemWidget);
     }
-
-    connect(ui->tableWidgetRight, SIGNAL(cellClicked(int, int)), this, SLOT(on_cellClicked(int, int)));
 }
 
 void MainWindow::fillBottomTableGradually()
 {
+    while (ui->tableWidgetBottom->columnCount() > 0) {
+        ui->tableWidgetBottom->removeColumn(0);
+    }
+
     for (int i = 0; i < documents.size(); i++) {
         QWidget *itemWidget = new QWidget();
         itemWidget->resize(208, 205);
 
         QLabel *labelBackground = new QLabel(itemWidget);
         labelBackground->setGeometry(5, 0, 208, ui->tableWidgetBottom->height());
-        labelBackground->setFixedSize(628, 230);
+        labelBackground->setFixedSize(208, ui->tableWidgetBottom->height());
         labelBackground->setStyleSheet("image: 0; border: 0; background-color: rgb(1, 65, 109);");
 
         QLabel *labelBottomBackground = new QLabel(itemWidget);
@@ -193,18 +211,24 @@ void MainWindow::fillBottomTableGradually()
         QLabel *labelBottomImage = new QLabel(itemWidget);
         labelBottomImage->setGeometry(15, 10, 178, 139);
         labelBottomImage->setFixedSize(178, 139);
-        labelBottomImage->setStyleSheet("image: 0; border: 0; background-color: rgb(32, 51, 65);");
+        QString photoPath = documents.at(i).object().value("results").toArray().at(0).toObject().value("details").toObject().value("afterXPhotoPath").toString();
+        QPixmap photoPixmap = getQPixmapSync(photoPath);
+        photoPixmap = photoPixmap.scaled(178
+                                         , 139
+                                         , Qt::IgnoreAspectRatio
+                                         , Qt::SmoothTransformation);
+        labelBottomImage->setPixmap(photoPixmap);
 
         QLabel *labelBottomText = new QLabel(itemWidget);
-        labelBottomText->setGeometry(5, 149, 198, 56);
-        labelBottomText->setFixedSize(198, 56);
+        labelBottomText->setGeometry(5, 149, 198, 46);
+        labelBottomText->setFixedSize(198, 46);
         labelBottomText->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         labelBottomText->setStyleSheet("image: 0; border: 0; background: transparent; font: 17pt; color: rgb(0, 252, 255);");
         labelBottomText->setText("行李框编号" + documents.at(i).object().value("results").toArray().at(0).toObject().value("boxNo").toString());
 
-        ui->tableWidgetBottom->insertColumn(i);
-        ui->tableWidgetBottom->setColumnWidth(i, 208);
-        ui->tableWidgetBottom->setCellWidget(0, i, itemWidget);
+        ui->tableWidgetBottom->insertColumn(0);
+        ui->tableWidgetBottom->setColumnWidth(0, 208);
+        ui->tableWidgetBottom->setCellWidget(0, 0, itemWidget);
     }
 }
 
@@ -242,15 +266,7 @@ void MainWindow::postResponse(QNetworkReply* reply)
                 if (results.isArray()) {
                     QJsonArray array = results.toArray();
 
-                    if (array.size() > 0) {
-                        ui->labelRightMeitouText_1->setText("RFID编号: " + array.at(0).toObject().value("rfid").toString());
-                        ui->labelRightMeitouText_2->setText("行李框编号: " + array.at(0).toObject().value("boxNo").toString());
-
-                        afterXPhotoPath = array.at(0).toObject().value("details").toObject().value("afterXPhotoPath").toString();
-                        beforeXPhotoPath = array.at(0).toObject().value("details").toObject().value("beforeXPhotoPath").toString();
-
-                        this->doSetPixmap();
-                    }
+                    this->doSetPixmap(array, 0);
 
                     this->fillRightTableTotally(ui->tableWidgetRight, array);
 
@@ -312,13 +328,14 @@ void MainWindow::on_pushButtonNImage_clicked()
 {
     isBeforeAfterChanged = !isBeforeAfterChanged;
 
-    this->doSetPixmap();
+    this->doSetPixmap(document.object().value("results").toArray(), rowRight);
 }
 
-void MainWindow::on_cellClicked(int row, int column)
+void MainWindow::on_rowClicked(int row, int column)
 {
     Q_UNUSED(column)
 
+    rowRight = row;
     QJsonObject obj = document.object();
 
     if (obj.contains("results")) {
@@ -326,12 +343,16 @@ void MainWindow::on_cellClicked(int row, int column)
         if (results.isArray()) {
             QJsonArray array = results.toArray();
 
-            if (array.size() > row) {
-                afterXPhotoPath = array.at(row).toObject().value("details").toObject().value("afterXPhotoPath").toString();
-                beforeXPhotoPath = array.at(row).toObject().value("details").toObject().value("beforeXPhotoPath").toString();
-
-                this->doSetPixmap();
-            }
+            this->doSetPixmap(array, row);
         }
     }
+}
+
+void MainWindow::on_columnClicked(int row, int column)
+{
+    Q_UNUSED(row)
+
+    document = documents.at(column);
+    fillRightTableTotally(ui->tableWidgetRight, document.object().value("results").toArray());
+    doSetPixmap(document.object().value("results").toArray(), 0);
 }

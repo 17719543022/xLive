@@ -20,6 +20,7 @@ void Listener::CommonRequstListen(const std::string &uri, const std::string &str
 {
     Q_UNUSED(uri)
     Q_UNUSED(strResponse)
+    qDebug() << "strRequestBody: " << strRequestBody.c_str();
 
     emit this->stateNetworkChange(true);
 

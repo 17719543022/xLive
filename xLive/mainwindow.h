@@ -25,7 +25,7 @@ public:
 private:
     QPixmap getQPixmapSync(QString str);
 
-    void doSetPixmap();
+    void doSetPixmap(QJsonArray array, int row);
 
     void fillRightTableTotally(QTableWidget *table, QJsonArray array);
 
@@ -38,16 +38,16 @@ private slots:
 
     void on_pushButtonNImage_clicked();
 
-    void on_cellClicked(int row, int column);
+    void on_rowClicked(int row, int column);
+
+    void on_columnClicked(int row, int column);
 
 private:
     Ui::MainWindow *ui;
     Listener listener;
     QJsonDocument document;
     QList<QJsonDocument> documents;
-
-    QString afterXPhotoPath;
-    QString beforeXPhotoPath;
+    int rowRight;
     bool isBeforeAfterChanged;
 };
 
