@@ -32,15 +32,19 @@ private:
     void fillBottomTableGradually();
 
 private slots:
-    void onNewSerialData(QString strRequest);
+    void on_NewLeaveBeltXLive(QString strRequest);
 
-    void postResponse(QNetworkReply* reply);
+    void on_NewOpenLuggageXLive(QString strRequest);
 
     void on_pushButtonNImage_clicked();
 
     void on_rowClicked(int row, int column);
 
     void on_columnClicked(int row, int column);
+
+    void on_NewLeaveBeltResponse(QNetworkReply* reply);
+
+    void on_NewOpenLuggageResponse(QNetworkReply* reply);
 
 private:
     Ui::MainWindow *ui;

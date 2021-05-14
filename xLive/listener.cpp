@@ -20,7 +20,6 @@ void Listener::CommonRequstListen(const std::string &uri, const std::string &str
 {
     Q_UNUSED(uri)
     Q_UNUSED(strResponse)
-    qDebug() << "strRequestBody: " << strRequestBody.c_str();
 
     emit this->stateNetworkChange(true);
 
@@ -29,8 +28,15 @@ void Listener::CommonRequstListen(const std::string &uri, const std::string &str
         return;
     }
 
+    // 5-行李框离开X光机传送带；
+    if (object.value("content").toObject().value("type").toInt() == 5) {
+        qDebug() << "5-行李框离开X光机传送带: " << strRequestBody.c_str();
+        emit this->newLeaveBeltXLive(QString::fromLocal8Bit(strRequestBody.c_str()));
+    }
+
     // 10-开包位读取
     if (object.value("content").toObject().value("type").toInt() == 10) {
-        emit this->newSerialData(QString::fromLocal8Bit(strRequestBody.c_str()));
+        qDebug() << "10-开包位读取: " << strRequestBody.c_str();
+        emit this->newOpenLuggageXLive(QString::fromLocal8Bit(strRequestBody.c_str()));
     }
 }

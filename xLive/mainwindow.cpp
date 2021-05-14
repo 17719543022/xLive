@@ -47,7 +47,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableWidgetBottom->setRowCount(1);
     ui->tableWidgetBottom->setRowHeight(0, 205);
 
-    connect(&listener, &Listener::newSerialData, this, &MainWindow::onNewSerialData);
+    connect(&listener, &Listener::newLeaveBeltXLive, this, &MainWindow::on_NewLeaveBeltXLive);
+    connect(&listener, &Listener::newOpenLuggageXLive, this, &MainWindow::on_NewOpenLuggageXLive);
     connect(ui->tableWidgetRight, SIGNAL(cellClicked(int, int)), this, SLOT(on_rowClicked(int, int)));
     connect(ui->tableWidgetBottom, SIGNAL(cellClicked(int, int)), this, SLOT(on_columnClicked(int, int)));
 }
@@ -232,7 +233,7 @@ void MainWindow::fillBottomTableGradually()
     }
 }
 
-void MainWindow::postResponse(QNetworkReply* reply)
+void MainWindow::on_NewLeaveBeltResponse(QNetworkReply* reply)
 {
     QVariant status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
 
@@ -259,7 +260,94 @@ void MainWindow::postResponse(QNetworkReply* reply)
         if (err.error == QJsonParseError::NoError) {
             QJsonObject obj = document.object();
 
-            qDebug() << "obj: " << obj;
+            qDebug() << "on_NewLeaveBeltResponse: " << obj;
+
+            if (obj.contains("results")) {
+                QJsonValue results = obj.value("results");
+                if (results.isArray()) {
+                    documents.append(document);
+
+                    this->fillBottomTableGradually();
+                }
+            }
+        }
+    }
+}
+
+void MainWindow::on_NewLeaveBeltXLive(QString strRequest)
+{
+    QNetworkRequest request;
+    QNetworkAccessManager* naManager = new QNetworkAccessManager(this);
+
+    connect(naManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(on_NewLeaveBeltResponse(QNetworkReply*)));
+
+    // Header
+    QString xLiveImageQuery = LocalSettings::instance()->value("Interface/queryUrl").toString();
+    request.setUrl(QUrl(xLiveImageQuery));
+    QString contentType = LocalSettings::instance()->value("Interface/contentType").toString();
+    request.setHeader(QNetworkRequest::ContentTypeHeader, contentType);
+    QString apiId = LocalSettings::instance()->value("Interface/apiId").toString();
+    request.setRawHeader("apiId", apiId.toLatin1());
+    QString timestamp = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
+    request.setRawHeader("timestamp", timestamp.toLatin1());
+    QString apiKey = LocalSettings::instance()->value("Interface/apiKey").toString();
+    QString temp = xLiveImageQuery.mid(xLiveImageQuery.indexOf("/api/v1")) + timestamp + apiKey;
+    QByteArray bb = QCryptographicHash::hash(temp.toLatin1(), QCryptographicHash::Md5);
+    QString sign = QString().append(bb.toHex());
+    request.setRawHeader("sign", sign.toLatin1());
+
+    // Body
+    QJsonObject json;
+    QJsonDocument doc;
+    QString uuid = QUuid::createUuid().toString();
+    uuid.remove("{").remove("}").remove("-");
+    json.insert("reqId", uuid);
+    QString baseDeviceId = LocalSettings::instance()->value("Device/baseDeviceId").toString();
+    json.insert("baseDeviceId", baseDeviceId);
+    QString channelCode = LocalSettings::instance()->value("Device/channelCode").toString();
+    json.insert("channelCode", channelCode);
+
+    QJsonObject object;
+    if (!parse(strRequest, object)) {
+        return;
+    }
+    QString rfid = object.value("content").toObject().value("rfid").toString();
+    json.insert("rfid", rfid);
+
+    doc.setObject(json);
+    QByteArray data = doc.toJson(QJsonDocument::Compact);
+
+    naManager->post(request, data);
+}
+
+void MainWindow::on_NewOpenLuggageResponse(QNetworkReply* reply)
+{
+    QVariant status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+
+    if (status.isValid()) {
+        qDebug() << "status: " << status.toInt();
+    }
+
+    QVariant reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute);
+
+    if (reason.isValid()) {
+        qDebug() << "reason: " << reason.toString();
+    }
+
+    QNetworkReply::NetworkError err = reply->error();
+
+    if (err != QNetworkReply::NoError) {
+        qDebug() << "Failed: " << reply->errorString();
+    } else {
+        QByteArray all = reply->readAll();
+
+        QJsonParseError err;
+        document = QJsonDocument::fromJson(all, &err);
+
+        if (err.error == QJsonParseError::NoError) {
+            QJsonObject obj = document.object();
+
+            qDebug() << "on_NewOpenLuggageResponse: " << obj;
 
             if (obj.contains("results")) {
                 QJsonValue results = obj.value("results");
@@ -269,21 +357,18 @@ void MainWindow::postResponse(QNetworkReply* reply)
                     this->doSetPixmap(array, 0);
 
                     this->fillRightTableTotally(ui->tableWidgetRight, array);
-
-                    documents.append(document);
-                    this->fillBottomTableGradually();
                 }
             }
         }
     }
 }
 
-void MainWindow::onNewSerialData(QString strRequest)
+void MainWindow::on_NewOpenLuggageXLive(QString strRequest)
 {
     QNetworkRequest request;
     QNetworkAccessManager* naManager = new QNetworkAccessManager(this);
 
-    connect(naManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(postResponse(QNetworkReply*)));
+    connect(naManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(on_NewOpenLuggageResponse(QNetworkReply*)));
 
     // Header
     QString xLiveImageQuery = LocalSettings::instance()->value("Interface/queryUrl").toString();

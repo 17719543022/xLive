@@ -16,7 +16,8 @@ private:
     virtual void CommonRequstListen(const std::string& uri, const std::string& strRequestBody, std::string& strResponse);
 
 signals:
-    void newSerialData(QString strRequest);
+    void newLeaveBeltXLive(QString strRequest);
+    void newOpenLuggageXLive(QString strRequest);
     void stateNetworkChange(bool state);
 };
 
