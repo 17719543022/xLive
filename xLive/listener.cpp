@@ -29,13 +29,13 @@ void Listener::CommonRequstListen(const std::string &uri, const std::string &str
     }
 
     // 5-行李框离开X光机传送带；
-    if (object.value("content").toObject().value("type").toInt() == 5) {
+    if (object.value("data").toObject().value("type").toInt() == 5) {
         qDebug() << "5-行李框离开X光机传送带: " << strRequestBody.c_str();
         emit this->newLeaveBeltXLive(QString::fromLocal8Bit(strRequestBody.c_str()));
     }
 
     // 10-开包位读取
-    if (object.value("content").toObject().value("type").toInt() == 10) {
+    if (object.value("data").toObject().value("type").toInt() == 10) {
         qDebug() << "10-开包位读取: " << strRequestBody.c_str();
         emit this->newOpenLuggageXLive(QString::fromLocal8Bit(strRequestBody.c_str()));
     }

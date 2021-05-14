@@ -311,8 +311,7 @@ void MainWindow::on_NewLeaveBeltXLive(QString strRequest)
     if (!parse(strRequest, object)) {
         return;
     }
-    QString rfid = object.value("content").toObject().value("rfid").toString();
-    json.insert("rfid", rfid);
+    json.insert("rfid", object.value("data").toObject().value("rfid").toString());
 
     doc.setObject(json);
     QByteArray data = doc.toJson(QJsonDocument::Compact);
@@ -400,8 +399,7 @@ void MainWindow::on_NewOpenLuggageXLive(QString strRequest)
     if (!parse(strRequest, object)) {
         return;
     }
-    QString rfid = object.value("content").toObject().value("rfid").toString();
-    json.insert("rfid", rfid);
+    json.insert("rfid", object.value("data").toObject().value("rfid").toString());
 
     doc.setObject(json);
     QByteArray data = doc.toJson(QJsonDocument::Compact);
@@ -437,7 +435,7 @@ void MainWindow::on_columnClicked(int row, int column)
 {
     Q_UNUSED(row)
 
-    document = documents.at(column);
+    document = documents.at(documents.size() - column - 1);
     fillRightTableTotally(ui->tableWidgetRight, document.object().value("results").toArray());
     doSetPixmap(document.object().value("results").toArray(), 0);
 }
