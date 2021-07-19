@@ -21,6 +21,7 @@ unix {
 
 SOURCES += \
     common.cpp \
+    extendqlabel.cpp \
     listener.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     HTTPServer/HTTPServerDef.h \
     HTTPServer/HTTPServerExp.h \
     common.h \
+    extendqlabel.h \
     listener.h \
     mainwindow.h \
     settings.h

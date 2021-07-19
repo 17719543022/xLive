@@ -17,6 +17,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QWidget>
+#include "extendqlabel.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -26,7 +27,7 @@ public:
     QWidget *centralwidget;
     QLabel *labelMeitou;
     QLabel *labelBackground;
-    QLabel *labelXImage;
+    extendQLabel *labelXImage;
     QLabel *labelRightMeitou;
     QLabel *labelMeitouText;
     QLabel *labelRightMeitouText_1;
@@ -54,7 +55,7 @@ public:
         labelBackground->setObjectName(QString::fromUtf8("labelBackground"));
         labelBackground->setGeometry(QRect(0, 0, 1920, 1080));
         labelBackground->setStyleSheet(QString::fromUtf8("background-color: rgb(1, 65, 109);"));
-        labelXImage = new QLabel(centralwidget);
+        labelXImage = new extendQLabel(centralwidget);
         labelXImage->setObjectName(QString::fromUtf8("labelXImage"));
         labelXImage->setGeometry(QRect(10, 75, 1262, 780));
         labelXImage->setStyleSheet(QString::fromUtf8("background-color: rgb(191, 224, 229);"));
