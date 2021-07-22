@@ -837,6 +837,44 @@ moc_extendqlabel.cpp: ../xLive/extendqlabel.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qvector2d.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/QMouseEvent \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkReply \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qnetworkreply.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QIODevice \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QString \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QVariant \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkRequest \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QSharedDataPointer \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QUrl \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QVector \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QSslConfiguration \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslsocket.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qtcpsocket.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslerror.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslcertificate.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qdatetime.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qssl.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QFlags \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QMetaType \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonArray \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonarray.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QMenu \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonDocument \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h \
 		moc_predefs.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc
 	/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/liuyong/xLive/build-xLive-Desktop_Qt_5_12_6_GCC_64bit-Debug/moc_predefs.h -I/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/liuyong/xLive/xLive -I/opt/Qt5.12.6/5.12.6/gcc_64/include -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../xLive/extendqlabel.h -o moc_extendqlabel.cpp
@@ -1182,7 +1220,45 @@ ui_mainwindow.h: ../xLive/mainwindow.ui \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qfiledevice.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qvector2d.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtouchdevice.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/QMouseEvent
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/QMouseEvent \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkReply \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qnetworkreply.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QIODevice \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QString \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QVariant \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkRequest \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QSharedDataPointer \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QUrl \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QVector \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QSslConfiguration \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslsocket.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qtcpsocket.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslerror.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslcertificate.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qdatetime.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qssl.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QFlags \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QMetaType \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonArray \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonarray.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QMenu \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonDocument \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h
 	/opt/Qt5.12.6/5.12.6/gcc_64/bin/uic ../xLive/mainwindow.ui -o ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
@@ -1376,11 +1452,57 @@ extendqlabel.o: ../xLive/extendqlabel.cpp ../xLive/extendqlabel.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qvector2d.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtouchdevice.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/QMouseEvent \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkReply \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qnetworkreply.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qtnetworkglobal.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qtnetwork-config.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QIODevice \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QString \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QVariant \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkRequest \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QSharedDataPointer \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QUrl \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QNetworkAccessManager \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qnetworkaccessmanager.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QVector \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QSslConfiguration \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslconfiguration.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslsocket.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qtcpsocket.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qabstractsocket.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslerror.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslcertificate.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qcryptographichash.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qdatetime.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qssl.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QFlags \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/QSslPreSharedKeyAuthenticator \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork/qsslpresharedkeyauthenticator.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QMetaType \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonArray \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonarray.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QMenu \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonDocument \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QDebug \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/QPainter \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpainter.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpen.h
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpen.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QAction \
+		../xLive/settings.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QSettings \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qsettings.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonObject \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonobject.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QUuid \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/quuid.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o extendqlabel.o ../xLive/extendqlabel.cpp
 
 listener.o: ../xLive/listener.cpp ../xLive/listener.h \
@@ -1802,7 +1924,14 @@ mainwindow.o: ../xLive/mainwindow.cpp ../xLive/mainwindow.h \
 		../xLive/settings.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QSettings \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qsettings.h \
-		../xLive/common.h
+		../xLive/common.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QMenu \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qaction.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../xLive/mainwindow.cpp
 
 settings.o: ../xLive/settings.cpp ../xLive/settings.h \

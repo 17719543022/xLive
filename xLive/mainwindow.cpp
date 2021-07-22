@@ -6,6 +6,8 @@
 #include <QUuid>
 #include "settings.h"
 #include "common.h"
+#include <QMenu>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

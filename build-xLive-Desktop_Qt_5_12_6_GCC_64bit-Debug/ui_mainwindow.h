@@ -58,6 +58,7 @@ public:
         labelXImage = new extendQLabel(centralwidget);
         labelXImage->setObjectName(QString::fromUtf8("labelXImage"));
         labelXImage->setGeometry(QRect(10, 75, 1262, 780));
+        labelXImage->setContextMenuPolicy(Qt::DefaultContextMenu);
         labelXImage->setStyleSheet(QString::fromUtf8("background-color: rgb(191, 224, 229);"));
         labelRightMeitou = new QLabel(centralwidget);
         labelRightMeitou->setObjectName(QString::fromUtf8("labelRightMeitou"));

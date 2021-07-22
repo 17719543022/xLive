@@ -4,6 +4,10 @@
 #include <QObject>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QNetworkReply>
+#include <QJsonArray>
+#include <QMenu>
+#include <QJsonDocument>
 
 class extendQLabel : public QLabel
 {
@@ -19,9 +23,21 @@ public:
 
     void paintEvent(QPaintEvent *event) override;
 
+    void contextMenuEvent(QContextMenuEvent *ev) override;
+
+private slots:
+    void on_Load();
+
+    void on_LoadResponse(QNetworkReply* reply);
+
+    void actionsSlot();
+
 private:
     bool isMousePress;
     QPoint begin, end, mid;
+    QJsonDocument document;
+    QJsonArray dictoryArray;
+    QMenu *m_menu1;
 };
 
 #endif // EXTENDQLABEL_H
