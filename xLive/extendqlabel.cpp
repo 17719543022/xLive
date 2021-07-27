@@ -7,9 +7,33 @@
 #include <QJsonDocument>
 #include <QUuid>
 
+Frame::Frame()
+    : currentPath(QString())
+    , begin(QPoint())
+    , end(QPoint())
+    , value(QString())
+    , valueId(0)
+    , isValid(false)
+{
+
+}
+
+void Frame::dump()
+{
+    if (isValid) {
+        qDebug() << "currentPath: " << currentPath;
+        qDebug() << "begin: " << begin;
+        qDebug() << "end: " << end;
+        qDebug() << "value: " << value;
+        qDebug() << "valueId: " << valueId;
+    }
+}
+
 extendQLabel::extendQLabel(QWidget *parent)
     : QLabel(parent)
-    , isMousePress(false)
+    , isMousePressed(false)
+    , currentPath(QString())
+    , value(QString())
 {
     this->on_Load();
 }
@@ -51,12 +75,23 @@ void extendQLabel::on_LoadResponse(QNetworkReply* reply)
                     for (int j = 0; j < dictoryArray.size(); j++) {
                         if ((dictoryArray.at(j).toObject().value("level").toInt() == 2)
                                 && (dictoryArray.at(j).toObject().value("parentId").toInt() == dictoryArray.at(i).toObject().value("valueId").toInt())) {
-                            QMenu *m_menu3 = m_menu2->addMenu(dictoryArray.at(j).toObject().value("value").toString());
-                            for (int k = 0; k < dictoryArray.size(); k++) {
-                                if ((dictoryArray.at(k).toObject().value("level").toInt() == 3)
-                                        && (dictoryArray.at(k).toObject().value("parentId").toInt() == dictoryArray.at(j).toObject().value("valueId").toInt())) {
-                                    m_menu3->addAction(dictoryArray.at(k).toObject().value("value").toString(), this, SLOT(actionsSlot()));
+                            int isValidParent = false;
+                            for (int l = 0; l < dictoryArray.size(); l++) {
+                                if ((dictoryArray.at(l).toObject().value("level").toInt() == 3)
+                                        && (dictoryArray.at(l).toObject().value("parentId").toInt() == dictoryArray.at(j).toObject().value("valueId").toInt())) {
+                                    isValidParent = true;
                                 }
+                            }
+                            if (isValidParent) {
+                                QMenu *m_menu3 = m_menu2->addMenu(dictoryArray.at(j).toObject().value("value").toString());
+                                for (int k = 0; k < dictoryArray.size(); k++) {
+                                    if ((dictoryArray.at(k).toObject().value("level").toInt() == 3)
+                                            && (dictoryArray.at(k).toObject().value("parentId").toInt() == dictoryArray.at(j).toObject().value("valueId").toInt())) {
+                                        m_menu3->addAction(dictoryArray.at(k).toObject().value("value").toString(), this, SLOT(actionsSlot()));
+                                    }
+                                }
+                            } else {
+                                m_menu2->addAction(dictoryArray.at(j).toObject().value("value").toString(), this, SLOT(actionsSlot()));
                             }
                         }
                     }
@@ -102,11 +137,16 @@ void extendQLabel::on_Load()
     naManager->post(request, data);
 }
 
+void extendQLabel::setCurrentPath(QString str)
+{
+    currentPath = str;
+}
+
 void extendQLabel::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton)
     {
-        isMousePress = true;
+        isMousePressed = true;
 
         begin = event->pos();
     }
@@ -117,8 +157,12 @@ void extendQLabel::mouseReleaseEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton)
     {
         end = event->pos();
-        isMousePress = false;
+        isMousePressed = false;
         update();
+
+        if ((qAbs(end.x() - begin.x()) > 15) && (qAbs(end.y() - begin.y()) > 15)) {
+            m_menu1->exec(cursor().pos());
+        }
     }
 }
 
@@ -138,36 +182,57 @@ void extendQLabel::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setPen(QPen(Qt::red, 2));
 
-    if (isMousePress)
+    if (isMousePressed)
     {
-      painter.drawRect(QRect(begin, mid));
+        painter.drawRect(QRect(begin, mid));
     } else {
-      painter.drawRect(QRect(begin, end));
+        if (value != QString()) {
+            for (int i = 0; i < 10; i++) {
+                if (!frames[i].isValid) {
+                    frames[i].currentPath = currentPath;
+                    frames[i].begin = begin;
+                    frames[i].end = end;
+                    frames[i].value = value;
+                    frames[i].valueId = 0;
+                    frames[i].isValid = true;
+                    break;
+                }
+            }
+
+            for (int j = 0; j < 10; j++) {
+                frames[j].dump();
+            }
+
+            begin = QPoint();
+            end = QPoint();
+            value = QString();
+        }
+
+        if ((qAbs(end.x() - begin.x()) > 15) && (qAbs(end.y() - begin.y()) > 15)) {
+            painter.drawRect(QRect(begin, end));
+        } else {
+            painter.eraseRect(QRect(begin, end));
+        }
+    }
+
+    for (int k = 0; k < 10; k++) {
+        if (frames[k].isValid) {
+            painter.drawRect(QRect(frames[k].begin, frames[k].end));
+            painter.drawText(QPoint(qMax(frames[k].begin.x(), frames[k].end.x()), qMin(frames[k].begin.y(), frames[k].end.y())), frames[k].value);
+        }
     }
 }
 
 void extendQLabel::actionsSlot()
 {
     QAction *action = (QAction *)sender();
-    QString actionText = action->text();
+    value = action->text();
 
-    qDebug() << actionText << "triggered!";
-
-    if ("1_1" == actionText) {
-        qDebug() << "1_1";
-    } else if ("1_2" == actionText) {
-        qDebug() << "1_2";
-    } else if ("1_3" == actionText) {
-        qDebug() << "1_3";
-    } else if ("1_4" == actionText) {
-        qDebug() << "1_4";
-    } else {
-        qDebug() << actionText;
-    }
+    update();
 }
 
 void extendQLabel::contextMenuEvent(QContextMenuEvent *ev)
 {
-    m_menu1->exec(cursor().pos());
+//    m_menu1->exec(cursor().pos());
     ev->accept();
 }

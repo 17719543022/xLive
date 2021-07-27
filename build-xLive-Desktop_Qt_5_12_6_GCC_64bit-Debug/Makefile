@@ -875,6 +875,10 @@ moc_extendqlabel.cpp: ../xLive/extendqlabel.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qactiongroup.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonDocument \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/QPainter \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpainter.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtextoption.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpen.h \
 		moc_predefs.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc
 	/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/liuyong/xLive/build-xLive-Desktop_Qt_5_12_6_GCC_64bit-Debug/moc_predefs.h -I/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/liuyong/xLive/xLive -I/opt/Qt5.12.6/5.12.6/gcc_64/include -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../xLive/extendqlabel.h -o moc_extendqlabel.cpp
@@ -1258,7 +1262,11 @@ ui_mainwindow.h: ../xLive/mainwindow.ui \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qaction.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qactiongroup.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonDocument \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/QPainter \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpainter.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtextoption.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpen.h
 	/opt/Qt5.12.6/5.12.6/gcc_64/bin/uic ../xLive/mainwindow.ui -o ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
@@ -1490,11 +1498,11 @@ extendqlabel.o: ../xLive/extendqlabel.cpp ../xLive/extendqlabel.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qactiongroup.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonDocument \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsondocument.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QDebug \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/QPainter \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpainter.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtextoption.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpen.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QDebug \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QAction \
 		../xLive/settings.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QSettings \

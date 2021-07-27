@@ -102,6 +102,7 @@ void MainWindow::doSetPixmap(QJsonArray array, int row)
                                                , Qt::IgnoreAspectRatio
                                                , Qt::SmoothTransformation);
             ui->labelXImage->setPixmap(beforePixmap);
+            ui->labelXImage->setCurrentPath(beforeXPhotoPath);
         } else {
             QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
 
@@ -110,6 +111,7 @@ void MainWindow::doSetPixmap(QJsonArray array, int row)
                                              , Qt::IgnoreAspectRatio
                                              , Qt::SmoothTransformation);
             ui->labelXImage->setPixmap(afterPixmap);
+            ui->labelXImage->setCurrentPath(afterXPhotoPath);
 
             QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
 
