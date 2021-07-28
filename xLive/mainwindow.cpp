@@ -443,3 +443,8 @@ void MainWindow::on_columnClicked(int row, int column)
     fillRightTableTotally(ui->tableWidgetRight, document.object().value("results").toArray());
     doSetPixmap(document.object().value("results").toArray(), 0);
 }
+
+void MainWindow::on_pushButtonUpLoad_clicked()
+{
+    ui->labelXImage->upLoad();
+}

@@ -208,6 +208,29 @@ border: 0;
 background-color: rgb(1, 65, 109);</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButtonUpLoad">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>597</y>
+      <width>252</width>
+      <height>44</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>17</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0;
+color: rgb(255, 255, 255);
+background-color: rgb(26, 173, 25);</string>
+    </property>
+    <property name="text">
+     <string>上传</string>
+    </property>
+   </widget>
    <zorder>labelBackground</zorder>
    <zorder>labelMeitou</zorder>
    <zorder>labelXImage</zorder>
@@ -218,6 +241,7 @@ background-color: rgb(1, 65, 109);</string>
    <zorder>pushButtonNImage</zorder>
    <zorder>tableWidgetRight</zorder>
    <zorder>tableWidgetBottom</zorder>
+   <zorder>pushButtonUpLoad</zorder>
   </widget>
  </widget>
  <customwidgets>

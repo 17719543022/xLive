@@ -21,7 +21,6 @@ Frame::Frame()
 void Frame::dump()
 {
     if (isValid) {
-        qDebug() << "currentPath: " << currentPath;
         qDebug() << "begin: " << begin;
         qDebug() << "end: " << end;
         qDebug() << "value: " << value;
@@ -104,7 +103,7 @@ void extendQLabel::on_LoadResponse(QNetworkReply* reply)
 void extendQLabel::on_Load()
 {
     QNetworkRequest request;
-    QNetworkAccessManager* naManager = new QNetworkAccessManager(this);
+    QNetworkAccessManager *naManager = new QNetworkAccessManager(this);
 
     connect(naManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(on_LoadResponse(QNetworkReply*)));
 
@@ -130,6 +129,76 @@ void extendQLabel::on_Load()
     uuid.remove("{").remove("}").remove("-");
     json.insert("reqId", uuid);
     json.insert("typeId", 9);
+
+    doc.setObject(json);
+    QByteArray data = doc.toJson(QJsonDocument::Compact);
+
+    naManager->post(request, data);
+}
+
+void extendQLabel::on_hazardousResponse(QNetworkReply *reply)
+{
+
+}
+
+void extendQLabel::upLoad()
+{
+//    qDebug() << "currentPath: " << currentPath;
+//    for (int i = 0; i < 10; i++) {
+//        qDebug() << "i: " << i;
+//        frames[i].dump();
+//    }
+
+    QNetworkRequest request;
+    QNetworkAccessManager *naManager = new QNetworkAccessManager(this);
+
+    connect(naManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(on_hazardousResponse(QNetworkReply*)));
+
+    // Header
+    QString hazardousUrl = LocalSettings::instance()->value("Interface/hazardousUrl").toString();
+    request.setUrl(QUrl(hazardousUrl));
+    QString contentType = LocalSettings::instance()->value("Interface/contentType").toString();
+    request.setHeader(QNetworkRequest::ContentTypeHeader, contentType);
+    QString apiId = LocalSettings::instance()->value("Interface/apiId").toString();
+    request.setRawHeader("apiId", apiId.toLatin1());
+    QString timestamp = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
+    request.setRawHeader("timestamp", timestamp.toLatin1());
+    QString apiKey = LocalSettings::instance()->value("Interface/apiKey").toString();
+    QString temp = hazardousUrl.mid(hazardousUrl.indexOf("/api/v1")) + timestamp + apiKey;
+    QByteArray bb = QCryptographicHash::hash(temp.toLatin1(), QCryptographicHash::Md5);
+    QString sign = QString().append(bb.toHex());
+    request.setRawHeader("sign", sign.toLatin1());
+
+    // Body
+    QJsonObject json;
+    QJsonDocument doc;
+    QString uuid = QUuid::createUuid().toString();
+    uuid.remove("{").remove("}").remove("-");
+    json.insert("reqId", uuid);
+    QString baseDeviceId = LocalSettings::instance()->value("Device/baseDeviceId").toString();
+    json.insert("baseDeviceId", baseDeviceId);
+    QString channelCode = LocalSettings::instance()->value("Device/channelCode").toString();
+    json.insert("channelCode", channelCode);
+    json.insert("processNode", 8);
+    QJsonObject extraInfo;
+    extraInfo.insert("imageExtraInfoId", currentPath);
+    QJsonArray imageExtraInfo;
+    for (int i = 0; i < 10; i++) {
+        if (frames[i].isValid) {
+            QJsonObject item;
+            item.insert("beginx", frames[i].begin.x());
+            item.insert("beginy", frames[i].begin.y());
+            item.insert("endx", frames[i].end.x());
+            item.insert("endy", frames[i].end.y());
+            item.insert("value", frames[i].value);
+            item.insert("valueId", frames[i].valueId);
+            imageExtraInfo.push_back(item);
+        }
+    }
+    extraInfo.insert("imageExtraInfo", imageExtraInfo);
+    json.insert("extraInfo", extraInfo);
+
+    qDebug() << "json: " << json;
 
     doc.setObject(json);
     QByteArray data = doc.toJson(QJsonDocument::Compact);
@@ -197,10 +266,6 @@ void extendQLabel::paintEvent(QPaintEvent *event)
                     frames[i].isValid = true;
                     break;
                 }
-            }
-
-            for (int j = 0; j < 10; j++) {
-                frames[j].dump();
             }
 
             begin = QPoint();

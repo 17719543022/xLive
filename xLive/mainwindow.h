@@ -46,6 +46,8 @@ private slots:
 
     void on_NewOpenLuggageResponse(QNetworkReply* reply);
 
+    void on_pushButtonUpLoad_clicked();
+
 private:
     Ui::MainWindow *ui;
     Listener listener;

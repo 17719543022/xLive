@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_extendQLabel_t {
-    QByteArrayData data[7];
-    char stringdata0[71];
+    QByteArrayData data[8];
+    char stringdata0[92];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,11 +37,13 @@ QT_MOC_LITERAL(2, 21, 0), // ""
 QT_MOC_LITERAL(3, 22, 15), // "on_LoadResponse"
 QT_MOC_LITERAL(4, 38, 14), // "QNetworkReply*"
 QT_MOC_LITERAL(5, 53, 5), // "reply"
-QT_MOC_LITERAL(6, 59, 11) // "actionsSlot"
+QT_MOC_LITERAL(6, 59, 20), // "on_hazardousResponse"
+QT_MOC_LITERAL(7, 80, 11) // "actionsSlot"
 
     },
     "extendQLabel\0on_Load\0\0on_LoadResponse\0"
-    "QNetworkReply*\0reply\0actionsSlot"
+    "QNetworkReply*\0reply\0on_hazardousResponse\0"
+    "actionsSlot"
 };
 #undef QT_MOC_LITERAL
 
@@ -51,7 +53,7 @@ static const uint qt_meta_data_extendQLabel[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,12 +61,14 @@ static const uint qt_meta_data_extendQLabel[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   29,    2, 0x08 /* Private */,
-       3,    1,   30,    2, 0x08 /* Private */,
-       6,    0,   33,    2, 0x08 /* Private */,
+       1,    0,   34,    2, 0x08 /* Private */,
+       3,    1,   35,    2, 0x08 /* Private */,
+       6,    1,   38,    2, 0x08 /* Private */,
+       7,    0,   41,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 4,    5,
     QMetaType::Void, 0x80000000 | 4,    5,
     QMetaType::Void,
 
@@ -79,13 +83,21 @@ void extendQLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         switch (_id) {
         case 0: _t->on_Load(); break;
         case 1: _t->on_LoadResponse((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 2: _t->actionsSlot(); break;
+        case 2: _t->on_hazardousResponse((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 3: _t->actionsSlot(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
         case 1:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QNetworkReply* >(); break;
+            }
+            break;
+        case 2:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -125,13 +137,13 @@ int extendQLabel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

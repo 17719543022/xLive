@@ -40,10 +40,14 @@ public:
 
     void contextMenuEvent(QContextMenuEvent *ev) override;
 
+    void upLoad();
+
 private slots:
     void on_Load();
 
-    void on_LoadResponse(QNetworkReply* reply);
+    void on_LoadResponse(QNetworkReply *reply);
+
+    void on_hazardousResponse(QNetworkReply *reply);
 
     void actionsSlot();
 
