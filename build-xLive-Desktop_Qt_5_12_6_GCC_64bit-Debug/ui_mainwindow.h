@@ -36,6 +36,7 @@ public:
     QTableWidget *tableWidgetRight;
     QTableWidget *tableWidgetBottom;
     QPushButton *pushButtonUpLoad;
+    QLabel *labelIdImage;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -91,7 +92,7 @@ public:
 "image: 0;"));
         tableWidgetRight = new QTableWidget(centralwidget);
         tableWidgetRight->setObjectName(QString::fromUtf8("tableWidgetRight"));
-        tableWidgetRight->setGeometry(QRect(1282, 145, 628, 710));
+        tableWidgetRight->setGeometry(QRect(1282, 145, 628, 635));
         tableWidgetRight->setStyleSheet(QString::fromUtf8("image: 0;\n"
 "border: 0;\n"
 "background-color: rgb(1, 65, 109);"));
@@ -104,13 +105,21 @@ public:
 "background-color: rgb(1, 65, 109);"));
         pushButtonUpLoad = new QPushButton(centralwidget);
         pushButtonUpLoad->setObjectName(QString::fromUtf8("pushButtonUpLoad"));
-        pushButtonUpLoad->setGeometry(QRect(1010, 597, 252, 44));
+        pushButtonUpLoad->setGeometry(QRect(1282, 790, 628, 65));
         QFont font2;
-        font2.setPointSize(17);
+        font2.setPointSize(24);
+        font2.setBold(true);
+        font2.setWeight(75);
         pushButtonUpLoad->setFont(font2);
         pushButtonUpLoad->setStyleSheet(QString::fromUtf8("border: 0;\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(26, 173, 25);"));
+        labelIdImage = new QLabel(centralwidget);
+        labelIdImage->setObjectName(QString::fromUtf8("labelIdImage"));
+        labelIdImage->setGeometry(QRect(748, 651, 252, 194));
+        labelIdImage->setStyleSheet(QString::fromUtf8("background-color: rgb(97, 102, 105);\n"
+"border: 0;\n"
+"image: 0;"));
         MainWindow->setCentralWidget(centralwidget);
         labelBackground->raise();
         labelMeitou->raise();
@@ -123,6 +132,7 @@ public:
         tableWidgetRight->raise();
         tableWidgetBottom->raise();
         pushButtonUpLoad->raise();
+        labelIdImage->raise();
 
         retranslateUi(MainWindow);
 
@@ -140,7 +150,8 @@ public:
         labelRightMeitouText_1->setText(QApplication::translate("MainWindow", "RFID\347\274\226\345\217\267: ", nullptr));
         labelRightMeitouText_2->setText(QApplication::translate("MainWindow", "\350\241\214\346\235\216\346\241\206\347\274\226\345\217\267: ", nullptr));
         pushButtonNImage->setText(QString());
-        pushButtonUpLoad->setText(QApplication::translate("MainWindow", "\344\270\212\344\274\240", nullptr));
+        pushButtonUpLoad->setText(QApplication::translate("MainWindow", "\346\217\220\343\200\200\344\272\244\343\200\200\344\270\212\343\200\200\344\274\240", nullptr));
+        labelIdImage->setText(QString());
     } // retranslateUi
 
 };

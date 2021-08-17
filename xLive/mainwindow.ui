@@ -181,7 +181,7 @@ image: 0;</string>
       <x>1282</x>
       <y>145</y>
       <width>628</width>
-      <height>710</height>
+      <height>635</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -211,15 +211,17 @@ background-color: rgb(1, 65, 109);</string>
    <widget class="QPushButton" name="pushButtonUpLoad">
     <property name="geometry">
      <rect>
-      <x>1010</x>
-      <y>597</y>
-      <width>252</width>
-      <height>44</height>
+      <x>1282</x>
+      <y>790</y>
+      <width>628</width>
+      <height>65</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>17</pointsize>
+      <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -228,7 +230,25 @@ color: rgb(255, 255, 255);
 background-color: rgb(26, 173, 25);</string>
     </property>
     <property name="text">
-     <string>上传</string>
+     <string>提　交　上　传</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelIdImage">
+    <property name="geometry">
+     <rect>
+      <x>748</x>
+      <y>651</y>
+      <width>252</width>
+      <height>194</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(97, 102, 105);
+border: 0;
+image: 0;</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
    <zorder>labelBackground</zorder>
@@ -242,6 +262,7 @@ background-color: rgb(26, 173, 25);</string>
    <zorder>tableWidgetRight</zorder>
    <zorder>tableWidgetBottom</zorder>
    <zorder>pushButtonUpLoad</zorder>
+   <zorder>labelIdImage</zorder>
   </widget>
  </widget>
  <customwidgets>
