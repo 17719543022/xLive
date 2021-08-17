@@ -7,7 +7,6 @@
 #include "settings.h"
 #include "common.h"
 #include <QMenu>
-#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -82,44 +81,62 @@ QPixmap MainWindow::getQPixmapSync(QString str)
 
 void MainWindow::doSetPixmap(QJsonArray array, int row)
 {
-    if (array.size() > row) {
-        QString afterXPhotoPath = array.at(row).toObject().value("details").toObject().value("afterXPhotoPath").toString();
-        QString beforeXPhotoPath = array.at(row).toObject().value("details").toObject().value("beforeXPhotoPath").toString();
-
-        if (isBeforeAfterChanged) {
-            QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
-
-            ui->pushButtonNImage->setIcon(QIcon(afterPixmap.scaled(ui->pushButtonNImage->width()
-                                                                   , ui->pushButtonNImage->height()
-                                                                   , Qt::IgnoreAspectRatio
-                                                                   , Qt::SmoothTransformation)));
-            ui->pushButtonNImage->setIconSize(QSize(252, 194));
-
-            QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
-
-            beforePixmap = beforePixmap.scaled(ui->labelXImage->width()
-                                               , ui->labelXImage->height()
-                                               , Qt::IgnoreAspectRatio
-                                               , Qt::SmoothTransformation);
-            ui->labelXImage->setPixmap(beforePixmap);
-            ui->labelXImage->setCurrentPath(beforeXPhotoPath);
+    if (ui->labelXImage->isFramesExists()) {
+        if (QMessageBox::Yes == QMessageBox::warning(this, tr("危险品标记信息未上传"),
+                                         tr("危险品标记信息未上传，点击Yes上传，\n"
+                                            "点击No丢弃本次危险品标记信息！"),
+                                         QMessageBox::Yes | QMessageBox::No,
+                                         QMessageBox::Yes)) {
+            ui->labelXImage->upLoad();
         } else {
-            QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
+            ui->labelXImage->setFrames();
+            update();
+        }
+    } else {
+        if (array.size() > row) {
+            QString afterXPhotoPath = array.at(row).toObject().value("details").toObject().value("afterXPhotoPath").toString();
+            QString beforeXPhotoPath = array.at(row).toObject().value("details").toObject().value("beforeXPhotoPath").toString();
+            QString afterXPhotoId = array.at(row).toObject().value("details").toObject().value("afterXPhotoId").toString();
+            QString beforeXPhotoId = array.at(row).toObject().value("details").toObject().value("beforeXPhotoId").toString();
+            ui->labelXImage->setRfid(array.at(row).toObject().value("rfid").toString());
 
-            afterPixmap = afterPixmap.scaled(ui->labelXImage->width()
-                                             , ui->labelXImage->height()
-                                             , Qt::IgnoreAspectRatio
-                                             , Qt::SmoothTransformation);
-            ui->labelXImage->setPixmap(afterPixmap);
-            ui->labelXImage->setCurrentPath(afterXPhotoPath);
+            if (isBeforeAfterChanged) {
+                QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
 
-            QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
+                ui->pushButtonNImage->setIcon(QIcon(afterPixmap.scaled(ui->pushButtonNImage->width()
+                                                                       , ui->pushButtonNImage->height()
+                                                                       , Qt::IgnoreAspectRatio
+                                                                       , Qt::SmoothTransformation)));
+                ui->pushButtonNImage->setIconSize(QSize(252, 194));
 
-            ui->pushButtonNImage->setIcon(QIcon(beforePixmap.scaled(ui->pushButtonNImage->width()
-                                                                    , ui->pushButtonNImage->height()
-                                                                    , Qt::IgnoreAspectRatio
-                                                                    , Qt::SmoothTransformation)));
-            ui->pushButtonNImage->setIconSize(QSize(252, 194));
+                QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
+
+                beforePixmap = beforePixmap.scaled(ui->labelXImage->width()
+                                                   , ui->labelXImage->height()
+                                                   , Qt::IgnoreAspectRatio
+                                                   , Qt::SmoothTransformation);
+                ui->labelXImage->setPixmap(beforePixmap);
+                ui->labelXImage->setCurrentPath(beforeXPhotoPath);
+                ui->labelXImage->setCurrentId(beforeXPhotoId);
+            } else {
+                QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
+
+                afterPixmap = afterPixmap.scaled(ui->labelXImage->width()
+                                                 , ui->labelXImage->height()
+                                                 , Qt::IgnoreAspectRatio
+                                                 , Qt::SmoothTransformation);
+                ui->labelXImage->setPixmap(afterPixmap);
+                ui->labelXImage->setCurrentPath(afterXPhotoPath);
+                ui->labelXImage->setCurrentId(afterXPhotoId);
+
+                QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
+
+                ui->pushButtonNImage->setIcon(QIcon(beforePixmap.scaled(ui->pushButtonNImage->width()
+                                                                        , ui->pushButtonNImage->height()
+                                                                        , Qt::IgnoreAspectRatio
+                                                                        , Qt::SmoothTransformation)));
+                ui->pushButtonNImage->setIconSize(QSize(252, 194));
+            }
         }
     }
 }

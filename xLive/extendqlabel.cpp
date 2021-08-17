@@ -9,6 +9,7 @@
 
 Frame::Frame()
     : currentPath(QString())
+    , currentId(QString())
     , begin(QPoint())
     , end(QPoint())
     , value(QString())
@@ -21,6 +22,8 @@ Frame::Frame()
 void Frame::dump()
 {
     if (isValid) {
+        qDebug() << "currentPath: " << currentPath;
+        qDebug() << "currentId: " << currentId;
         qDebug() << "begin: " << begin;
         qDebug() << "end: " << end;
         qDebug() << "value: " << value;
@@ -32,7 +35,10 @@ extendQLabel::extendQLabel(QWidget *parent)
     : QLabel(parent)
     , isMousePressed(false)
     , currentPath(QString())
+    , currentId(QString())
+    , rfid(QString())
     , value(QString())
+    , valueId(0)
 {
     this->on_Load();
 }
@@ -138,16 +144,42 @@ void extendQLabel::on_Load()
 
 void extendQLabel::on_hazardousResponse(QNetworkReply *reply)
 {
+    QVariant status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
 
+    if (status.isValid()) {
+        qDebug() << "status: " << status.toInt();
+    }
+
+    QVariant reason = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute);
+
+    if (reason.isValid()) {
+        qDebug() << "reason: " << reason.toString();
+    }
+
+    QNetworkReply::NetworkError err = reply->error();
+
+    if (err != QNetworkReply::NoError) {
+        qDebug() << "Failed: " << reply->errorString();
+    } else {
+        QByteArray all = reply->readAll();
+
+        QJsonParseError err;
+        document = QJsonDocument::fromJson(all, &err);
+
+        if (document.object().value("msg").toString() == "success") {
+            this->setFrames();
+            update();
+
+            QMessageBox::information(nullptr, QObject::tr("上传成功"),
+                        QObject::tr("危险品标记信息上传成功！\n"
+                                    "点击Close退出。"), QMessageBox::Close);
+        }
+    }
 }
 
 void extendQLabel::upLoad()
 {
-//    qDebug() << "currentPath: " << currentPath;
-//    for (int i = 0; i < 10; i++) {
-//        qDebug() << "i: " << i;
-//        frames[i].dump();
-//    }
+    bool canIUpLoadFrames = false;
 
     QNetworkRequest request;
     QNetworkAccessManager *naManager = new QNetworkAccessManager(this);
@@ -175,16 +207,19 @@ void extendQLabel::upLoad()
     QString uuid = QUuid::createUuid().toString();
     uuid.remove("{").remove("}").remove("-");
     json.insert("reqId", uuid);
+    json.insert("rfid", rfid);
     QString baseDeviceId = LocalSettings::instance()->value("Device/baseDeviceId").toString();
     json.insert("baseDeviceId", baseDeviceId);
     QString channelCode = LocalSettings::instance()->value("Device/channelCode").toString();
     json.insert("channelCode", channelCode);
     json.insert("processNode", 8);
     QJsonObject extraInfo;
-    extraInfo.insert("imageExtraInfoId", currentPath);
+    extraInfo.insert("imageExtraInfoId", currentId);
     QJsonArray imageExtraInfo;
     for (int i = 0; i < 10; i++) {
         if (frames[i].isValid) {
+            canIUpLoadFrames = true;
+
             QJsonObject item;
             item.insert("beginx", frames[i].begin.x());
             item.insert("beginy", frames[i].begin.y());
@@ -203,12 +238,55 @@ void extendQLabel::upLoad()
     doc.setObject(json);
     QByteArray data = doc.toJson(QJsonDocument::Compact);
 
-    naManager->post(request, data);
+    if (canIUpLoadFrames) {
+        naManager->post(request, data);
+    } else {
+        QMessageBox::critical(nullptr, QObject::tr("无危险品标记信息"),
+                    QObject::tr("没有危险品标记信息，无需上传！\n"
+                                "点击Cancel退出。"), QMessageBox::Cancel);
+    }
 }
 
 void extendQLabel::setCurrentPath(QString str)
 {
     currentPath = str;
+}
+
+void extendQLabel::setCurrentId(QString str)
+{
+    currentId = str;
+}
+
+void extendQLabel::setRfid(QString str)
+{
+    rfid = str;
+}
+
+void extendQLabel::setFrames()
+{
+    for (int i = 0; i < 10; i++) {
+        frames[i].currentPath = QString();
+        frames[i].currentId = QString();
+        frames[i].begin = QPoint();
+        frames[i].end = QPoint();
+        frames[i].value = QString();
+        frames[i].valueId = 0;
+        frames[i].isValid = false;
+    }
+}
+
+bool extendQLabel::isFramesExists()
+{
+    bool isFramesExist = false;
+
+    for (int i = 0; i < 10; i++) {
+        if (frames[i].isValid) {
+            isFramesExist = true;
+            break;
+        }
+    }
+
+    return isFramesExist;
 }
 
 void extendQLabel::mousePressEvent(QMouseEvent *event)
@@ -259,10 +337,11 @@ void extendQLabel::paintEvent(QPaintEvent *event)
             for (int i = 0; i < 10; i++) {
                 if (!frames[i].isValid) {
                     frames[i].currentPath = currentPath;
+                    frames[i].currentId = currentId;
                     frames[i].begin = begin;
                     frames[i].end = end;
                     frames[i].value = value;
-                    frames[i].valueId = 0;
+                    frames[i].valueId = valueId;
                     frames[i].isValid = true;
                     break;
                 }
@@ -292,6 +371,12 @@ void extendQLabel::actionsSlot()
 {
     QAction *action = (QAction *)sender();
     value = action->text();
+    for (int i = 0; i < dictoryArray.size(); i++) {
+        if (dictoryArray.at(i).toObject().value("value").toString() == value) {
+            valueId = dictoryArray.at(i).toObject().value("valueId").toInt();
+            break;
+        }
+    }
 
     update();
 }

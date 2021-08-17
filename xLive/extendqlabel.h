@@ -9,12 +9,14 @@
 #include <QMenu>
 #include <QJsonDocument>
 #include <QPainter>
+#include <QMessageBox>
 
 class Frame {
 public:
     Frame();
     void dump();
     QString currentPath;
+    QString currentId;
     QPoint begin;
     QPoint end;
     QString value;
@@ -29,6 +31,14 @@ public:
     extendQLabel(QWidget *parent=nullptr);
 
     void setCurrentPath(QString str);
+
+    void setCurrentId(QString str);
+
+    void setRfid(QString str);
+
+    void setFrames();
+
+    bool isFramesExists();
 
     void mousePressEvent(QMouseEvent *event) override;
 
@@ -59,7 +69,10 @@ private:
     QMenu *m_menu1;
     Frame frames[10];
     QString currentPath;
+    QString currentId;
+    QString rfid;
     QString value;
+    int valueId;
 };
 
 #endif // EXTENDQLABEL_H
