@@ -98,6 +98,14 @@ void MainWindow::doSetPixmap(QJsonArray array, int row)
             QString beforeXPhotoPath = array.at(row).toObject().value("details").toObject().value("beforeXPhotoPath").toString();
             QString afterXPhotoId = array.at(row).toObject().value("details").toObject().value("afterXPhotoId").toString();
             QString beforeXPhotoId = array.at(row).toObject().value("details").toObject().value("beforeXPhotoId").toString();
+
+            QString passengerLivePhotoPath = array.at(row).toObject().value("details").toObject().value("passengerLivePhotoPath").toString();
+            QPixmap livePixmap = getQPixmapSync(passengerLivePhotoPath);
+            livePixmap = livePixmap.scaled(ui->labelIdImage->width()
+                                           , ui->labelIdImage->height()
+                                           , Qt::IgnoreAspectRatio
+                                           , Qt::SmoothTransformation);
+            ui->labelIdImage->setPixmap(livePixmap);
             ui->labelXImage->setRfid(array.at(row).toObject().value("rfid").toString());
 
             if (isBeforeAfterChanged) {
