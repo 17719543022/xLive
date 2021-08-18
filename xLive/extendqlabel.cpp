@@ -73,34 +73,39 @@ void extendQLabel::on_LoadResponse(QNetworkReply* reply)
 
             dictoryArray = obj.value("results").toObject().value("9").toArray();
 
+//            m_menu1 = new QMenu();
+//            for (int i = 0; i < dictoryArray.size(); i++) {
+//                if (dictoryArray.at(i).toObject().value("level").toInt() == 1) {
+//                    QMenu *m_menu2 = m_menu1->addMenu(dictoryArray.at(i).toObject().value("value").toString());
+//                    for (int j = 0; j < dictoryArray.size(); j++) {
+//                        if ((dictoryArray.at(j).toObject().value("level").toInt() == 2)
+//                                && (dictoryArray.at(j).toObject().value("parentId").toInt() == dictoryArray.at(i).toObject().value("valueId").toInt())) {
+//                            int isValidParent = false;
+//                            for (int l = 0; l < dictoryArray.size(); l++) {
+//                                if ((dictoryArray.at(l).toObject().value("level").toInt() == 3)
+//                                        && (dictoryArray.at(l).toObject().value("parentId").toInt() == dictoryArray.at(j).toObject().value("valueId").toInt())) {
+//                                    isValidParent = true;
+//                                }
+//                            }
+//                            if (isValidParent) {
+//                                QMenu *m_menu3 = m_menu2->addMenu(dictoryArray.at(j).toObject().value("value").toString());
+//                                for (int k = 0; k < dictoryArray.size(); k++) {
+//                                    if ((dictoryArray.at(k).toObject().value("level").toInt() == 3)
+//                                            && (dictoryArray.at(k).toObject().value("parentId").toInt() == dictoryArray.at(j).toObject().value("valueId").toInt())) {
+//                                        m_menu3->addAction(dictoryArray.at(k).toObject().value("value").toString(), this, SLOT(actionsSlot()));
+//                                    }
+//                                }
+//                            } else {
+//                                m_menu2->addAction(dictoryArray.at(j).toObject().value("value").toString(), this, SLOT(actionsSlot()));
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+
             m_menu1 = new QMenu();
             for (int i = 0; i < dictoryArray.size(); i++) {
-                if (dictoryArray.at(i).toObject().value("level").toInt() == 1) {
-                    QMenu *m_menu2 = m_menu1->addMenu(dictoryArray.at(i).toObject().value("value").toString());
-                    for (int j = 0; j < dictoryArray.size(); j++) {
-                        if ((dictoryArray.at(j).toObject().value("level").toInt() == 2)
-                                && (dictoryArray.at(j).toObject().value("parentId").toInt() == dictoryArray.at(i).toObject().value("valueId").toInt())) {
-                            int isValidParent = false;
-                            for (int l = 0; l < dictoryArray.size(); l++) {
-                                if ((dictoryArray.at(l).toObject().value("level").toInt() == 3)
-                                        && (dictoryArray.at(l).toObject().value("parentId").toInt() == dictoryArray.at(j).toObject().value("valueId").toInt())) {
-                                    isValidParent = true;
-                                }
-                            }
-                            if (isValidParent) {
-                                QMenu *m_menu3 = m_menu2->addMenu(dictoryArray.at(j).toObject().value("value").toString());
-                                for (int k = 0; k < dictoryArray.size(); k++) {
-                                    if ((dictoryArray.at(k).toObject().value("level").toInt() == 3)
-                                            && (dictoryArray.at(k).toObject().value("parentId").toInt() == dictoryArray.at(j).toObject().value("valueId").toInt())) {
-                                        m_menu3->addAction(dictoryArray.at(k).toObject().value("value").toString(), this, SLOT(actionsSlot()));
-                                    }
-                                }
-                            } else {
-                                m_menu2->addAction(dictoryArray.at(j).toObject().value("value").toString(), this, SLOT(actionsSlot()));
-                            }
-                        }
-                    }
-                }
+                m_menu1->addAction(dictoryArray.at(i).toObject().value("value").toString(), this, SLOT(actionsSlot()));
             }
         }
     }
