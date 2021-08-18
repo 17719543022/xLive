@@ -14,8 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
     , documents(QList<QJsonDocument>())
     , rowRight(0)
     , isBeforeAfterChanged(false)
+    , timer(new QTimer(this))
 {
     ui->setupUi(this);
+    ui->widgetDlg->hide();
 
     this->setWindowFlag(Qt::FramelessWindowHint);
 
@@ -52,6 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&listener, &Listener::newOpenLuggageXLive, this, &MainWindow::on_NewOpenLuggageXLive);
     connect(ui->tableWidgetRight, SIGNAL(cellClicked(int, int)), this, SLOT(on_rowClicked(int, int)));
     connect(ui->tableWidgetBottom, SIGNAL(cellClicked(int, int)), this, SLOT(on_columnClicked(int, int)));
+    connect(ui->labelXImage, SIGNAL(uploadFailed()), this, SLOT(on_uploadFailed()));
+    connect(ui->labelXImage, SIGNAL(uploadSuccess()), this, SLOT(on_uploadedSuccess()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(on_pushButton_TimeOut()));
 }
 
 MainWindow::~MainWindow()
@@ -82,16 +87,14 @@ QPixmap MainWindow::getQPixmapSync(QString str)
 void MainWindow::doSetPixmap(QJsonArray array, int row)
 {
     if (ui->labelXImage->isFramesExists()) {
-        if (QMessageBox::Yes == QMessageBox::warning(this, tr("危险品标记信息未上传"),
-                                         tr("危险品标记信息未上传，点击Yes上传，\n"
-                                            "点击No丢弃本次危险品标记信息！"),
-                                         QMessageBox::Yes | QMessageBox::No,
-                                         QMessageBox::Yes)) {
-            ui->labelXImage->upLoad();
-        } else {
-            ui->labelXImage->setFrames();
-            update();
-        }
+        ui->labelText->setText("危险品标记信息未上传，请确认是否上传？");
+        ui->pushButtonConfirm->hide();
+        ui->pushButtonAccept->setText("确　认（3）");
+        ui->pushButtonAccept->show();
+        ui->pushButtonReject->show();
+        ui->widgetDlg->show();
+
+        timer->start(1000);
     } else {
         if (array.size() > row) {
             QString afterXPhotoPath = array.at(row).toObject().value("details").toObject().value("afterXPhotoPath").toString();
@@ -472,4 +475,58 @@ void MainWindow::on_columnClicked(int row, int column)
 void MainWindow::on_pushButtonUpLoad_clicked()
 {
     ui->labelXImage->upLoad();
+}
+
+void MainWindow::on_uploadFailed()
+{
+    ui->labelText->setText("没有危险品标记信息，无需上传！");
+    ui->pushButtonAccept->hide();
+    ui->pushButtonReject->hide();
+    ui->pushButtonConfirm->show();
+    ui->widgetDlg->show();
+}
+
+void MainWindow::on_uploadedSuccess()
+{
+    ui->labelText->setText("危险品标记信息上传成功！");
+    ui->pushButtonAccept->hide();
+    ui->pushButtonReject->hide();
+    ui->pushButtonConfirm->show();
+    ui->widgetDlg->show();
+}
+
+void MainWindow::on_pushButtonClose_clicked()
+{
+    ui->widgetDlg->hide();
+}
+
+void MainWindow::on_pushButtonConfirm_clicked()
+{
+    ui->widgetDlg->hide();
+}
+
+void MainWindow::on_pushButtonAccept_clicked()
+{
+    ui->labelXImage->upLoad();
+}
+
+void MainWindow::on_pushButtonReject_clicked()
+{
+    ui->widgetDlg->hide();
+
+    ui->labelXImage->setFrames();
+    update();
+}
+
+void MainWindow::on_pushButton_TimeOut()
+{
+    int second = ui->pushButtonAccept->text().mid(4, 1).toInt() - 1;
+
+    if (second < 0) {
+        timer->stop();
+
+        ui->labelXImage->upLoad();
+    } else {
+        ui->pushButtonAccept->setText("确　认（" + QString::number(second) + "）");
+    }
 }

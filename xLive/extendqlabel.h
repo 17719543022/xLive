@@ -9,7 +9,6 @@
 #include <QMenu>
 #include <QJsonDocument>
 #include <QPainter>
-#include <QMessageBox>
 
 class Frame {
 public:
@@ -60,6 +59,11 @@ private slots:
     void on_hazardousResponse(QNetworkReply *reply);
 
     void actionsSlot();
+
+signals:
+    void uploadFailed();
+
+    void uploadSuccess();
 
 private:
     bool isMousePressed;

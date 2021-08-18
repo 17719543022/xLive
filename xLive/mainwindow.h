@@ -8,6 +8,7 @@
 #include <QJsonArray>
 #include <QNetworkReply>
 #include <QTableWidget>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -48,6 +49,20 @@ private slots:
 
     void on_pushButtonUpLoad_clicked();
 
+    void on_uploadFailed();
+
+    void on_uploadedSuccess();
+
+    void on_pushButtonClose_clicked();
+
+    void on_pushButtonConfirm_clicked();
+
+    void on_pushButtonAccept_clicked();
+
+    void on_pushButtonReject_clicked();
+
+    void on_pushButton_TimeOut();
+
 private:
     Ui::MainWindow *ui;
     Listener listener;
@@ -55,6 +70,7 @@ private:
     QList<QJsonDocument> documents;
     int rowRight;
     bool isBeforeAfterChanged;
+    QTimer *timer;
 };
 
 #endif // MAINWINDOW_H

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Images/关--闭-拷贝-按下.png</file>
+        <file>Images/关--闭-拷贝.png</file>
+    </qresource>
+</RCC>

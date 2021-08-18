@@ -17,28 +17,7 @@
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QLabel" name="labelMeitou">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1920</width>
-      <height>65</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>30</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(31, 46, 73);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelBackground">
+   <widget class="QWidget" name="widgetAll" native="true">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -50,219 +29,381 @@
     <property name="styleSheet">
      <string notr="true">background-color: rgb(1, 65, 109);</string>
     </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="extendQLabel" name="labelXImage">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>75</y>
-      <width>1262</width>
-      <height>780</height>
-     </rect>
-    </property>
-    <property name="contextMenuPolicy">
-     <enum>Qt::DefaultContextMenu</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(191, 224, 229);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightMeitou">
-    <property name="geometry">
-     <rect>
-      <x>1282</x>
-      <y>75</y>
-      <width>628</width>
-      <height>65</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>25</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(1, 25, 42);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelMeitouText">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>400</width>
-      <height>65</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>30</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>旅客随身行李开包系统</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightMeitouText_1">
-    <property name="geometry">
-     <rect>
-      <x>1292</x>
-      <y>75</y>
-      <width>351</width>
-      <height>65</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>25</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(0, 252, 255);</string>
-    </property>
-    <property name="text">
-     <string>RFID编号: </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelRightMeitouText_2">
-    <property name="geometry">
-     <rect>
-      <x>1660</x>
-      <y>75</y>
-      <width>250</width>
-      <height>65</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>25</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(0, 252, 255);</string>
-    </property>
-    <property name="text">
-     <string>行李框编号: </string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonNImage">
-    <property name="geometry">
-     <rect>
-      <x>1010</x>
-      <y>651</y>
-      <width>252</width>
-      <height>194</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(97, 102, 105);
+    <widget class="QLabel" name="labelIdImage">
+     <property name="geometry">
+      <rect>
+       <x>748</x>
+       <y>651</y>
+       <width>252</width>
+       <height>194</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(97, 102, 105);
 border: 0;
 image: 0;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="tableWidgetRight">
-    <property name="geometry">
-     <rect>
-      <x>1282</x>
-      <y>145</y>
-      <width>628</width>
-      <height>635</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: 0;
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelMeitou">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1920</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(31, 46, 73);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelMeitouText">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>400</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>30</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: 0;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>旅客随身行李开包系统</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelRightMeitou">
+     <property name="geometry">
+      <rect>
+       <x>1282</x>
+       <y>75</y>
+       <width>628</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>25</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(1, 25, 42);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelRightMeitouText_1">
+     <property name="geometry">
+      <rect>
+       <x>1292</x>
+       <y>75</y>
+       <width>351</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>25</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: 0;
+color: rgb(0, 252, 255);</string>
+     </property>
+     <property name="text">
+      <string>RFID编号: </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelRightMeitouText_2">
+     <property name="geometry">
+      <rect>
+       <x>1660</x>
+       <y>75</y>
+       <width>250</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>25</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: 0;
+color: rgb(0, 252, 255);</string>
+     </property>
+     <property name="text">
+      <string>行李框编号: </string>
+     </property>
+    </widget>
+    <widget class="extendQLabel" name="labelXImage">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>75</y>
+       <width>1262</width>
+       <height>780</height>
+      </rect>
+     </property>
+     <property name="contextMenuPolicy">
+      <enum>Qt::DefaultContextMenu</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(191, 224, 229);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonNImage">
+     <property name="geometry">
+      <rect>
+       <x>1010</x>
+       <y>651</y>
+       <width>252</width>
+       <height>194</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(97, 102, 105);
+border: 0;
+image: 0;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonUpLoad">
+     <property name="geometry">
+      <rect>
+       <x>1282</x>
+       <y>790</y>
+       <width>628</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>24</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 0;
+color: rgb(255, 255, 255);
+background-color: rgb(4, 185, 118);
+border-radius:8px;</string>
+     </property>
+     <property name="text">
+      <string>提　交　上　传</string>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidgetBottom">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>865</y>
+       <width>1905</width>
+       <height>205</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: 0;
 border: 0;
 background-color: rgb(1, 65, 109);</string>
-    </property>
-    <property name="verticalScrollBarPolicy">
-     <enum>Qt::ScrollBarAsNeeded</enum>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="tableWidgetBottom">
-    <property name="geometry">
-     <rect>
-      <x>5</x>
-      <y>865</y>
-      <width>1905</width>
-      <height>205</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: 0;
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidgetRight">
+     <property name="geometry">
+      <rect>
+       <x>1282</x>
+       <y>145</y>
+       <width>628</width>
+       <height>635</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: 0;
 border: 0;
 background-color: rgb(1, 65, 109);</string>
-    </property>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+    </widget>
+    <zorder>labelMeitou</zorder>
+    <zorder>labelMeitouText</zorder>
+    <zorder>labelRightMeitou</zorder>
+    <zorder>labelRightMeitouText_1</zorder>
+    <zorder>labelRightMeitouText_2</zorder>
+    <zorder>labelXImage</zorder>
+    <zorder>labelIdImage</zorder>
+    <zorder>pushButtonNImage</zorder>
+    <zorder>pushButtonUpLoad</zorder>
+    <zorder>tableWidgetBottom</zorder>
+    <zorder>tableWidgetRight</zorder>
    </widget>
-   <widget class="QPushButton" name="pushButtonUpLoad">
+   <widget class="QWidget" name="widgetDlg" native="true">
     <property name="geometry">
      <rect>
-      <x>1282</x>
-      <y>790</y>
-      <width>628</width>
-      <height>65</height>
+      <x>0</x>
+      <y>0</y>
+      <width>1920</width>
+      <height>1080</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>24</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">border: 0;
-color: rgb(255, 255, 255);
-background-color: rgb(26, 173, 25);</string>
+background-color: rgba(0, 0, 0, 0.5);</string>
     </property>
-    <property name="text">
-     <string>提　交　上　传</string>
-    </property>
+    <widget class="QWidget" name="widgetBox" native="true">
+     <property name="geometry">
+      <rect>
+       <x>596</x>
+       <y>310</y>
+       <width>728</width>
+       <height>426</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(1, 43, 68);</string>
+     </property>
+     <widget class="QPushButton" name="pushButtonClose">
+      <property name="geometry">
+       <rect>
+        <x>665</x>
+        <y>15</y>
+        <width>47</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{image: 0; background: 0; border-image: url(:/new/prefix1/Images/关--闭-拷贝.png);}
+QPushButton:pressed{image: 0; background: 0; border-image: url(:/new/prefix1/Images/关--闭-拷贝-按下.png);}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonConfirm">
+      <property name="geometry">
+       <rect>
+        <x>238</x>
+        <y>330</y>
+        <width>252</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(4, 185, 118);
+border-radius:8px;</string>
+      </property>
+      <property name="text">
+       <string>确　认</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonAccept">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>330</y>
+        <width>252</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(4, 185, 118);
+border-radius:8px;</string>
+      </property>
+      <property name="text">
+       <string>确　认（3）</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonReject">
+      <property name="geometry">
+       <rect>
+        <x>406</x>
+        <y>330</y>
+        <width>252</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(165, 165, 165);
+border-radius:8px;</string>
+      </property>
+      <property name="text">
+       <string>取消</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelText">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>160</y>
+        <width>725</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>确认提交上传该X光图像？</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
    </widget>
-   <widget class="QLabel" name="labelIdImage">
-    <property name="geometry">
-     <rect>
-      <x>748</x>
-      <y>651</y>
-      <width>252</width>
-      <height>194</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(97, 102, 105);
-border: 0;
-image: 0;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <zorder>labelBackground</zorder>
-   <zorder>labelMeitou</zorder>
-   <zorder>labelXImage</zorder>
-   <zorder>labelRightMeitou</zorder>
-   <zorder>labelMeitouText</zorder>
-   <zorder>labelRightMeitouText_1</zorder>
-   <zorder>labelRightMeitouText_2</zorder>
-   <zorder>pushButtonNImage</zorder>
-   <zorder>tableWidgetRight</zorder>
-   <zorder>tableWidgetBottom</zorder>
-   <zorder>pushButtonUpLoad</zorder>
-   <zorder>labelIdImage</zorder>
   </widget>
  </widget>
  <customwidgets>

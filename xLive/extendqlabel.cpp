@@ -175,9 +175,7 @@ void extendQLabel::on_hazardousResponse(QNetworkReply *reply)
             this->setFrames();
             update();
 
-            QMessageBox::information(nullptr, QObject::tr("上传成功"),
-                        QObject::tr("危险品标记信息上传成功！\n"
-                                    "点击Close退出。"), QMessageBox::Close);
+            emit this->uploadSuccess();
         }
     }
 }
@@ -246,9 +244,7 @@ void extendQLabel::upLoad()
     if (canIUpLoadFrames) {
         naManager->post(request, data);
     } else {
-        QMessageBox::critical(nullptr, QObject::tr("无危险品标记信息"),
-                    QObject::tr("没有危险品标记信息，无需上传！\n"
-                                "点击Cancel退出。"), QMessageBox::Cancel);
+        emit this->uploadFailed();
     }
 }
 

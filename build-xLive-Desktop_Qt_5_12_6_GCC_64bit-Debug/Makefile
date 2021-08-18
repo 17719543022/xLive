@@ -57,7 +57,8 @@ SOURCES       = ../xLive/common.cpp \
 		../xLive/listener.cpp \
 		../xLive/main.cpp \
 		../xLive/mainwindow.cpp \
-		../xLive/settings.cpp moc_extendqlabel.cpp \
+		../xLive/settings.cpp qrc_Images.cpp \
+		moc_extendqlabel.cpp \
 		moc_listener.cpp \
 		moc_mainwindow.cpp
 OBJECTS       = common.o \
@@ -66,6 +67,7 @@ OBJECTS       = common.o \
 		main.o \
 		mainwindow.o \
 		settings.o \
+		qrc_Images.o \
 		moc_extendqlabel.o \
 		moc_listener.o \
 		moc_mainwindow.o
@@ -480,7 +482,8 @@ Makefile: ../xLive/xLive.pro /opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/linux-g++/qmake
 		/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/features/exceptions.prf \
 		/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/features/lex.prf \
-		../xLive/xLive.pro
+		../xLive/xLive.pro \
+		../xLive/Images.qrc
 	$(QMAKE) -o Makefile ../xLive/xLive.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 /opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/features/spec_pre.prf:
 /opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/common/unix.conf:
@@ -677,6 +680,7 @@ Makefile: ../xLive/xLive.pro /opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/linux-g++/qmake
 /opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/features/yacc.prf:
 /opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/features/lex.prf:
 ../xLive/xLive.pro:
+../xLive/Images.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../xLive/xLive.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
@@ -691,6 +695,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../xLive/Images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../xLive/HTTPServer/HTTPServerDef.h ../xLive/HTTPServer/HTTPServerExp.h ../xLive/common.h ../xLive/extendqlabel.h ../xLive/listener.h ../xLive/mainwindow.h ../xLive/settings.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../xLive/common.cpp ../xLive/extendqlabel.cpp ../xLive/listener.cpp ../xLive/main.cpp ../xLive/mainwindow.cpp ../xLive/settings.cpp $(DISTDIR)/
@@ -718,8 +723,15 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_Images.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_Images.cpp
+qrc_Images.cpp: ../xLive/Images.qrc \
+		/opt/Qt5.12.6/5.12.6/gcc_64/bin/rcc \
+		../xLive/Images/关--闭-拷贝-按下.png \
+		../xLive/Images/关--闭-拷贝.png
+	/opt/Qt5.12.6/5.12.6/gcc_64/bin/rcc -name Images ../xLive/Images.qrc -o qrc_Images.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -879,9 +891,6 @@ moc_extendqlabel.cpp: ../xLive/extendqlabel.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpainter.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtextoption.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QMessageBox \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qmessagebox.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qdialog.h \
 		moc_predefs.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc
 	/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/liuyong/xLive/build-xLive-Desktop_Qt_5_12_6_GCC_64bit-Debug/moc_predefs.h -I/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/liuyong/xLive/xLive -I/opt/Qt5.12.6/5.12.6/gcc_64/include -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../xLive/extendqlabel.h -o moc_extendqlabel.cpp
@@ -1107,6 +1116,9 @@ moc_mainwindow.cpp: ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qstyle.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QTimer \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qtimer.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qbasictimer.h \
 		moc_predefs.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc
 	/opt/Qt5.12.6/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/liuyong/xLive/build-xLive-Desktop_Qt_5_12_6_GCC_64bit-Debug/moc_predefs.h -I/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/liuyong/xLive/xLive -I/opt/Qt5.12.6/5.12.6/gcc_64/include -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtNetwork -I/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../xLive/mainwindow.h -o moc_mainwindow.cpp
@@ -1269,10 +1281,7 @@ ui_mainwindow.h: ../xLive/mainwindow.ui \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/QPainter \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpainter.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QMessageBox \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qmessagebox.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qdialog.h
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpen.h
 	/opt/Qt5.12.6/5.12.6/gcc_64/bin/uic ../xLive/mainwindow.ui -o ui_mainwindow.h
 
 compiler_yacc_decl_make_all:
@@ -1281,7 +1290,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1508,9 +1517,6 @@ extendqlabel.o: ../xLive/extendqlabel.cpp ../xLive/extendqlabel.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpainter.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qtextoption.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QMessageBox \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qmessagebox.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qdialog.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QDebug \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QAction \
 		../xLive/settings.h \
@@ -1761,6 +1767,9 @@ main.o: ../xLive/main.cpp ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qstyle.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QTimer \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qtimer.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qbasictimer.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qapplication.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1934,6 +1943,9 @@ mainwindow.o: ../xLive/mainwindow.cpp ../xLive/mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qstyle.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QTimer \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qtimer.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qbasictimer.h \
 		ui_mainwindow.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QDebug \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QUuid \
@@ -2015,6 +2027,9 @@ settings.o: ../xLive/settings.cpp ../xLive/settings.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qsharedpointer.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o settings.o ../xLive/settings.cpp
+
+qrc_Images.o: qrc_Images.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Images.o qrc_Images.cpp
 
 moc_extendqlabel.o: moc_extendqlabel.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_extendqlabel.o moc_extendqlabel.cpp
