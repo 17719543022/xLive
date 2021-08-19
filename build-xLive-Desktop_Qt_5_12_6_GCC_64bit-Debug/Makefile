@@ -71,7 +71,8 @@ OBJECTS       = common.o \
 		moc_extendqlabel.o \
 		moc_listener.o \
 		moc_mainwindow.o
-DIST          = /opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/features/spec_pre.prf \
+DIST          = ../xLive/menu.css \
+		/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/common/linux.conf \
 		/opt/Qt5.12.6/5.12.6/gcc_64/mkspecs/common/sanitize.conf \
@@ -1525,7 +1526,10 @@ extendqlabel.o: ../xLive/extendqlabel.cpp ../xLive/extendqlabel.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QJsonObject \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qjsonobject.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QUuid \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/quuid.h
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/quuid.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QDir \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qdir.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o extendqlabel.o ../xLive/extendqlabel.cpp
 
 listener.o: ../xLive/listener.cpp ../xLive/listener.h \

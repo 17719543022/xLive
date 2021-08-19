@@ -6,6 +6,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QUuid>
+#include <QDir>
 
 Frame::Frame()
     : currentPath(QString())
@@ -104,8 +105,20 @@ void extendQLabel::on_LoadResponse(QNetworkReply* reply)
 //            }
 
             m_menu1 = new QMenu();
+//            m_menu1->setStyleSheet("background-color: rgb(1, 44, 76); color: rgb(0, 228, 255);");
+            QFile file("../xLive/menu.css");
+//            qDebug() << "QFile: " << file.fileName();
+//            qDebug() << "read: " << file.open(QFile::ReadOnly);
+            qDebug() << "currentPath: " << QDir::currentPath();
+            if (file.open(QFile::ReadOnly)) {
+                QString qss = QLatin1String(file.readAll());
+                qDebug() << "qss: " << qss;
+                m_menu1->setStyleSheet(qss);
+                file.close();
+            }
             for (int i = 0; i < dictoryArray.size(); i++) {
                 m_menu1->addAction(dictoryArray.at(i).toObject().value("value").toString(), this, SLOT(actionsSlot()));
+                m_menu1->addSeparator();
             }
         }
     }
