@@ -44,6 +44,8 @@ public:
     QPushButton *pushButtonAccept;
     QPushButton *pushButtonReject;
     QLabel *labelText;
+    QPushButton *pushButtonAccept_2;
+    QPushButton *pushButtonReject_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -189,6 +191,20 @@ public:
         labelText->setFont(font2);
         labelText->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
         labelText->setAlignment(Qt::AlignCenter);
+        pushButtonAccept_2 = new QPushButton(widgetBox);
+        pushButtonAccept_2->setObjectName(QString::fromUtf8("pushButtonAccept_2"));
+        pushButtonAccept_2->setGeometry(QRect(70, 330, 252, 56));
+        pushButtonAccept_2->setFont(font4);
+        pushButtonAccept_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgb(4, 185, 118);\n"
+"border-radius:8px;"));
+        pushButtonReject_2 = new QPushButton(widgetBox);
+        pushButtonReject_2->setObjectName(QString::fromUtf8("pushButtonReject_2"));
+        pushButtonReject_2->setGeometry(QRect(406, 330, 252, 56));
+        pushButtonReject_2->setFont(font4);
+        pushButtonReject_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgb(165, 165, 165);\n"
+"border-radius:8px;"));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -211,8 +227,10 @@ public:
         pushButtonClose->setText(QString());
         pushButtonConfirm->setText(QApplication::translate("MainWindow", "\347\241\256\343\200\200\350\256\244", nullptr));
         pushButtonAccept->setText(QApplication::translate("MainWindow", "\347\241\256\343\200\200\350\256\244\357\274\2103\357\274\211", nullptr));
-        pushButtonReject->setText(QApplication::translate("MainWindow", "\345\217\226\346\266\210", nullptr));
+        pushButtonReject->setText(QApplication::translate("MainWindow", "\345\217\226\343\200\200\346\266\210", nullptr));
         labelText->setText(QApplication::translate("MainWindow", "\347\241\256\350\256\244\346\217\220\344\272\244\344\270\212\344\274\240\350\257\245X\345\205\211\345\233\276\345\203\217\357\274\237", nullptr));
+        pushButtonAccept_2->setText(QApplication::translate("MainWindow", "\347\241\256\343\200\200\345\256\232", nullptr));
+        pushButtonReject_2->setText(QApplication::translate("MainWindow", "\345\217\226\343\200\200\346\266\210", nullptr));
     } // retranslateUi
 
 };

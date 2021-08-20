@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[23];
-    char stringdata0[413];
+    QByteArrayData data[26];
+    char stringdata0[488];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -49,11 +49,14 @@ QT_MOC_LITERAL(14, 208, 27), // "on_pushButtonUpLoad_clicked"
 QT_MOC_LITERAL(15, 236, 15), // "on_uploadFailed"
 QT_MOC_LITERAL(16, 252, 18), // "on_uploadedSuccess"
 QT_MOC_LITERAL(17, 271, 7), // "newPath"
-QT_MOC_LITERAL(18, 279, 26), // "on_pushButtonClose_clicked"
-QT_MOC_LITERAL(19, 306, 28), // "on_pushButtonConfirm_clicked"
-QT_MOC_LITERAL(20, 335, 27), // "on_pushButtonAccept_clicked"
-QT_MOC_LITERAL(21, 363, 27), // "on_pushButtonReject_clicked"
-QT_MOC_LITERAL(22, 391, 21) // "on_pushButton_TimeOut"
+QT_MOC_LITERAL(18, 279, 14), // "on_deleteFrame"
+QT_MOC_LITERAL(19, 294, 26), // "on_pushButtonClose_clicked"
+QT_MOC_LITERAL(20, 321, 28), // "on_pushButtonConfirm_clicked"
+QT_MOC_LITERAL(21, 350, 27), // "on_pushButtonAccept_clicked"
+QT_MOC_LITERAL(22, 378, 29), // "on_pushButtonAccept_2_clicked"
+QT_MOC_LITERAL(23, 408, 27), // "on_pushButtonReject_clicked"
+QT_MOC_LITERAL(24, 436, 29), // "on_pushButtonReject_2_clicked"
+QT_MOC_LITERAL(25, 466, 21) // "on_pushButton_TimeOut"
 
     },
     "MainWindow\0on_NewLeaveBeltXLive\0\0"
@@ -63,11 +66,13 @@ QT_MOC_LITERAL(22, 391, 21) // "on_pushButton_TimeOut"
     "on_NewLeaveBeltResponse\0QNetworkReply*\0"
     "reply\0on_NewOpenLuggageResponse\0"
     "on_pushButtonUpLoad_clicked\0on_uploadFailed\0"
-    "on_uploadedSuccess\0newPath\0"
+    "on_uploadedSuccess\0newPath\0on_deleteFrame\0"
     "on_pushButtonClose_clicked\0"
     "on_pushButtonConfirm_clicked\0"
     "on_pushButtonAccept_clicked\0"
+    "on_pushButtonAccept_2_clicked\0"
     "on_pushButtonReject_clicked\0"
+    "on_pushButtonReject_2_clicked\0"
     "on_pushButton_TimeOut"
 };
 #undef QT_MOC_LITERAL
@@ -78,7 +83,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -86,21 +91,24 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   89,    2, 0x08 /* Private */,
-       4,    1,   92,    2, 0x08 /* Private */,
-       5,    0,   95,    2, 0x08 /* Private */,
-       6,    2,   96,    2, 0x08 /* Private */,
-       9,    2,  101,    2, 0x08 /* Private */,
-      10,    1,  106,    2, 0x08 /* Private */,
-      13,    1,  109,    2, 0x08 /* Private */,
-      14,    0,  112,    2, 0x08 /* Private */,
-      15,    0,  113,    2, 0x08 /* Private */,
-      16,    1,  114,    2, 0x08 /* Private */,
-      18,    0,  117,    2, 0x08 /* Private */,
-      19,    0,  118,    2, 0x08 /* Private */,
-      20,    0,  119,    2, 0x08 /* Private */,
-      21,    0,  120,    2, 0x08 /* Private */,
-      22,    0,  121,    2, 0x08 /* Private */,
+       1,    1,  104,    2, 0x08 /* Private */,
+       4,    1,  107,    2, 0x08 /* Private */,
+       5,    0,  110,    2, 0x08 /* Private */,
+       6,    2,  111,    2, 0x08 /* Private */,
+       9,    2,  116,    2, 0x08 /* Private */,
+      10,    1,  121,    2, 0x08 /* Private */,
+      13,    1,  124,    2, 0x08 /* Private */,
+      14,    0,  127,    2, 0x08 /* Private */,
+      15,    0,  128,    2, 0x08 /* Private */,
+      16,    1,  129,    2, 0x08 /* Private */,
+      18,    0,  132,    2, 0x08 /* Private */,
+      19,    0,  133,    2, 0x08 /* Private */,
+      20,    0,  134,    2, 0x08 /* Private */,
+      21,    0,  135,    2, 0x08 /* Private */,
+      22,    0,  136,    2, 0x08 /* Private */,
+      23,    0,  137,    2, 0x08 /* Private */,
+      24,    0,  138,    2, 0x08 /* Private */,
+      25,    0,  139,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -113,6 +121,9 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   17,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -138,11 +149,14 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 7: _t->on_pushButtonUpLoad_clicked(); break;
         case 8: _t->on_uploadFailed(); break;
         case 9: _t->on_uploadedSuccess((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 10: _t->on_pushButtonClose_clicked(); break;
-        case 11: _t->on_pushButtonConfirm_clicked(); break;
-        case 12: _t->on_pushButtonAccept_clicked(); break;
-        case 13: _t->on_pushButtonReject_clicked(); break;
-        case 14: _t->on_pushButton_TimeOut(); break;
+        case 10: _t->on_deleteFrame(); break;
+        case 11: _t->on_pushButtonClose_clicked(); break;
+        case 12: _t->on_pushButtonConfirm_clicked(); break;
+        case 13: _t->on_pushButtonAccept_clicked(); break;
+        case 14: _t->on_pushButtonAccept_2_clicked(); break;
+        case 15: _t->on_pushButtonReject_clicked(); break;
+        case 16: _t->on_pushButtonReject_2_clicked(); break;
+        case 17: _t->on_pushButton_TimeOut(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -195,13 +209,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 18;
     }
     return _id;
 }

@@ -57,6 +57,8 @@ public:
 
     void upLoad();
 
+    void doDeleteFrame();
+
 private slots:
     void on_Load();
 
@@ -71,9 +73,12 @@ signals:
 
     void uploadSuccess(QString newPath);
 
+    void deleteFrame();
+
 private:
     bool isMousePressed;
     QPoint begin, end, mid;
+    QPoint right;
     QJsonDocument document;
     QJsonArray dictoryArray;
     QMenu *m_menu1;

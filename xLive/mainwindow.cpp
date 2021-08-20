@@ -57,6 +57,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->labelXImage, SIGNAL(uploadFailed()), this, SLOT(on_uploadFailed()));
     connect(ui->labelXImage, SIGNAL(uploadSuccess(QString)), this, SLOT(on_uploadedSuccess(QString)));
     connect(timer, SIGNAL(timeout()), this, SLOT(on_pushButton_TimeOut()));
+    connect(ui->labelXImage, SIGNAL(deleteFrame()), this, SLOT(on_deleteFrame()));
 }
 
 MainWindow::~MainWindow()
@@ -89,8 +90,10 @@ void MainWindow::doSetPixmap(QJsonArray array, int row)
     if (ui->labelXImage->isFramesExists()) {
         ui->labelText->setText("危险品标记信息未上传，请确认是否上传？");
         ui->pushButtonConfirm->hide();
+        ui->pushButtonAccept_2->hide();
         ui->pushButtonAccept->setText("确　认（3）");
         ui->pushButtonAccept->show();
+        ui->pushButtonReject_2->hide();
         ui->pushButtonReject->show();
         ui->widgetDlg->show();
 
@@ -487,7 +490,9 @@ void MainWindow::on_uploadFailed()
 {
     ui->labelText->setText("没有危险品标记信息，无需上传！");
     ui->pushButtonAccept->hide();
+    ui->pushButtonAccept_2->hide();
     ui->pushButtonReject->hide();
+    ui->pushButtonReject_2->hide();
     ui->pushButtonConfirm->show();
     ui->widgetDlg->show();
 }
@@ -496,7 +501,9 @@ void MainWindow::on_uploadedSuccess(QString newPath)
 {
     ui->labelText->setText("危险品标记信息上传成功！");
     ui->pushButtonAccept->hide();
+    ui->pushButtonAccept_2->hide();
     ui->pushButtonReject->hide();
+    ui->pushButtonReject_2->hide();
     ui->pushButtonConfirm->show();
     ui->widgetDlg->show();
 
@@ -506,6 +513,17 @@ void MainWindow::on_uploadedSuccess(QString newPath)
                                          , Qt::IgnoreAspectRatio
                                          , Qt::SmoothTransformation);
     ui->labelXImage->setPixmap(currentPixmap);
+}
+
+void MainWindow::on_deleteFrame()
+{
+    ui->labelText->setText("确定删除此危险品标记框？");
+    ui->pushButtonConfirm->hide();
+    ui->pushButtonAccept->hide();
+    ui->pushButtonAccept_2->show();
+    ui->pushButtonReject->hide();
+    ui->pushButtonReject_2->show();
+    ui->widgetDlg->show();
 }
 
 void MainWindow::on_pushButtonClose_clicked()
@@ -523,12 +541,24 @@ void MainWindow::on_pushButtonAccept_clicked()
     ui->labelXImage->upLoad();
 }
 
+void MainWindow::on_pushButtonAccept_2_clicked()
+{
+    ui->labelXImage->doDeleteFrame();
+
+    ui->widgetDlg->hide();
+}
+
 void MainWindow::on_pushButtonReject_clicked()
 {
     ui->widgetDlg->hide();
 
     ui->labelXImage->setFrames();
     update();
+}
+
+void MainWindow::on_pushButtonReject_2_clicked()
+{
+    ui->widgetDlg->hide();
 }
 
 void MainWindow::on_pushButton_TimeOut()
@@ -543,3 +573,4 @@ void MainWindow::on_pushButton_TimeOut()
         ui->pushButtonAccept->setText("确　认（" + QString::number(second) + "）");
     }
 }
+

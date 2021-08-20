@@ -254,6 +254,24 @@ void extendQLabel::upLoad()
     }
 }
 
+void extendQLabel::doDeleteFrame()
+{
+    for (int i = 0; i < 10; i++) {
+        if (((qMin(frames[i].begin.x(), frames[i].end.x()) < right.x()) && qMax(frames[i].begin.x(), frames[i].end.x()) > right.x())
+                && ((qMin(frames[i].begin.y(), frames[i].end.y()) < right.y()) && qMax(frames[i].begin.y(), frames[i].end.y()) > right.y())) {
+            frames[i].currentPath = QString();
+            frames[i].currentId = QString();
+            frames[i].begin = QPoint();
+            frames[i].end = QPoint();
+            frames[i].value = QString();
+            frames[i].valueId = 0;
+            frames[i].isValid = false;
+        }
+    }
+
+    update();
+}
+
 void extendQLabel::setCurrentPath(QString str)
 {
     currentPath = str;
@@ -411,6 +429,18 @@ void extendQLabel::actionsSlot()
 
 void extendQLabel::contextMenuEvent(QContextMenuEvent *ev)
 {
+    if (ev->type() == QEvent::ContextMenu) {
+        qDebug() << "ev->pos().x(): " << ev->pos().x();
+        qDebug() << "ev->pos().y(): " << ev->pos().y();
+        for (int i = 0; i < 10; i++) {
+            if (((qMin(frames[i].begin.x(), frames[i].end.x()) < ev->pos().x()) && qMax(frames[i].begin.x(), frames[i].end.x()) > ev->pos().x())
+                    && ((qMin(frames[i].begin.y(), frames[i].end.y()) < ev->pos().y()) && qMax(frames[i].begin.y(), frames[i].end.y()) > ev->pos().y())) {
+                right = ev->pos();
+                emit deleteFrame();
+            }
+        }
+    }
+
 //    m_menu1->exec(cursor().pos());
     ev->accept();
 }

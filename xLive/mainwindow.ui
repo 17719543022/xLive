@@ -373,7 +373,7 @@ background-color: rgb(165, 165, 165);
 border-radius:8px;</string>
       </property>
       <property name="text">
-       <string>取消</string>
+       <string>取　消</string>
       </property>
      </widget>
      <widget class="QLabel" name="labelText">
@@ -400,6 +400,52 @@ border-radius:8px;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonAccept_2">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>330</y>
+        <width>252</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(4, 185, 118);
+border-radius:8px;</string>
+      </property>
+      <property name="text">
+       <string>确　定</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButtonReject_2">
+      <property name="geometry">
+       <rect>
+        <x>406</x>
+        <y>330</y>
+        <width>252</width>
+        <height>56</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(165, 165, 165);
+border-radius:8px;</string>
+      </property>
+      <property name="text">
+       <string>取　消</string>
       </property>
      </widget>
     </widget>

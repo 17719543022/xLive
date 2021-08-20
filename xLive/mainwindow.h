@@ -53,13 +53,19 @@ private slots:
 
     void on_uploadedSuccess(QString newPath);
 
+    void on_deleteFrame();
+
     void on_pushButtonClose_clicked();
 
     void on_pushButtonConfirm_clicked();
 
     void on_pushButtonAccept_clicked();
 
+    void on_pushButtonAccept_2_clicked();
+
     void on_pushButtonReject_clicked();
+
+    void on_pushButtonReject_2_clicked();
 
     void on_pushButton_TimeOut();
 
