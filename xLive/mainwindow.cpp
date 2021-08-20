@@ -121,6 +121,9 @@ void MainWindow::doSetPixmap(QJsonArray array, int row)
                 ui->pushButtonNImage->setIconSize(QSize(252, 194));
 
                 QPixmap beforePixmap = getQPixmapSync(beforeXPhotoPath);
+                ui->labelXImage->setCurrentWidth(beforePixmap.width());
+                ui->labelXImage->setCurrentHeight(beforePixmap.height());
+                ui->labelXImage->setCurrentPixmap(beforePixmap);
 
                 beforePixmap = beforePixmap.scaled(ui->labelXImage->width()
                                                    , ui->labelXImage->height()
@@ -131,6 +134,9 @@ void MainWindow::doSetPixmap(QJsonArray array, int row)
                 ui->labelXImage->setCurrentId(beforeXPhotoId);
             } else {
                 QPixmap afterPixmap = getQPixmapSync(afterXPhotoPath);
+                ui->labelXImage->setCurrentWidth(afterPixmap.width());
+                ui->labelXImage->setCurrentHeight(afterPixmap.height());
+                ui->labelXImage->setCurrentPixmap(afterPixmap);
 
                 afterPixmap = afterPixmap.scaled(ui->labelXImage->width()
                                                  , ui->labelXImage->height()

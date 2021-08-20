@@ -1529,7 +1529,9 @@ extendqlabel.o: ../xLive/extendqlabel.cpp ../xLive/extendqlabel.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/quuid.h \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QDir \
 		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qdir.h \
-		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qfileinfo.h
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qfileinfo.h \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/QBuffer \
+		/opt/Qt5.12.6/5.12.6/gcc_64/include/QtCore/qbuffer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o extendqlabel.o ../xLive/extendqlabel.cpp
 
 listener.o: ../xLive/listener.cpp ../xLive/listener.h \

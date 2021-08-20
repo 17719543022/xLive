@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <QUuid>
 #include <QDir>
+#include <QBuffer>
 
 Frame::Frame()
     : currentPath(QString())
@@ -37,6 +38,9 @@ extendQLabel::extendQLabel(QWidget *parent)
     , isMousePressed(false)
     , currentPath(QString())
     , currentId(QString())
+    , currentPixmap(QPixmap())
+    , currentWidth(0)
+    , currentHeight(0)
     , rfid(QString())
     , value(QString())
     , valueId(0)
@@ -74,45 +78,10 @@ void extendQLabel::on_LoadResponse(QNetworkReply* reply)
 
             dictoryArray = obj.value("results").toObject().value("9").toArray();
 
-//            m_menu1 = new QMenu();
-//            for (int i = 0; i < dictoryArray.size(); i++) {
-//                if (dictoryArray.at(i).toObject().value("level").toInt() == 1) {
-//                    QMenu *m_menu2 = m_menu1->addMenu(dictoryArray.at(i).toObject().value("value").toString());
-//                    for (int j = 0; j < dictoryArray.size(); j++) {
-//                        if ((dictoryArray.at(j).toObject().value("level").toInt() == 2)
-//                                && (dictoryArray.at(j).toObject().value("parentId").toInt() == dictoryArray.at(i).toObject().value("valueId").toInt())) {
-//                            int isValidParent = false;
-//                            for (int l = 0; l < dictoryArray.size(); l++) {
-//                                if ((dictoryArray.at(l).toObject().value("level").toInt() == 3)
-//                                        && (dictoryArray.at(l).toObject().value("parentId").toInt() == dictoryArray.at(j).toObject().value("valueId").toInt())) {
-//                                    isValidParent = true;
-//                                }
-//                            }
-//                            if (isValidParent) {
-//                                QMenu *m_menu3 = m_menu2->addMenu(dictoryArray.at(j).toObject().value("value").toString());
-//                                for (int k = 0; k < dictoryArray.size(); k++) {
-//                                    if ((dictoryArray.at(k).toObject().value("level").toInt() == 3)
-//                                            && (dictoryArray.at(k).toObject().value("parentId").toInt() == dictoryArray.at(j).toObject().value("valueId").toInt())) {
-//                                        m_menu3->addAction(dictoryArray.at(k).toObject().value("value").toString(), this, SLOT(actionsSlot()));
-//                                    }
-//                                }
-//                            } else {
-//                                m_menu2->addAction(dictoryArray.at(j).toObject().value("value").toString(), this, SLOT(actionsSlot()));
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-
             m_menu1 = new QMenu();
-//            m_menu1->setStyleSheet("background-color: rgb(1, 44, 76); color: rgb(0, 228, 255);");
             QFile file("../xLive/menu.css");
-//            qDebug() << "QFile: " << file.fileName();
-//            qDebug() << "read: " << file.open(QFile::ReadOnly);
-            qDebug() << "currentPath: " << QDir::currentPath();
             if (file.open(QFile::ReadOnly)) {
                 QString qss = QLatin1String(file.readAll());
-                qDebug() << "qss: " << qss;
                 m_menu1->setStyleSheet(qss);
                 file.close();
             }
@@ -237,10 +206,10 @@ void extendQLabel::upLoad()
             canIUpLoadFrames = true;
 
             QJsonObject item;
-            item.insert("beginx", frames[i].begin.x());
-            item.insert("beginy", frames[i].begin.y());
-            item.insert("endx", frames[i].end.x());
-            item.insert("endy", frames[i].end.y());
+            item.insert("beginx", int(frames[i].begin.x() * currentWidth / this->width()));
+            item.insert("beginy", int(frames[i].begin.y() * currentHeight / this->height()));
+            item.insert("endx", int(frames[i].end.x() * currentWidth / this->width()));
+            item.insert("endy", int(frames[i].end.y() * currentHeight / this->height()));
             item.insert("value", frames[i].value);
             item.insert("valueId", frames[i].valueId);
             imageExtraInfo.push_back(item);
@@ -248,6 +217,27 @@ void extendQLabel::upLoad()
     }
     extraInfo.insert("imageExtraInfo", imageExtraInfo);
     json.insert("extraInfo", extraInfo);
+
+    QPainter painter(&currentPixmap);
+    painter.begin(&currentPixmap);
+    painter.setPen(QPen(Qt::red, 2));
+    for (int i = 0; i < 10; i++) {
+        if (frames[i].isValid) {
+            painter.drawRect(QRect(QPoint(int(frames[i].begin.x() * currentWidth / this->width()), int(frames[i].begin.y() * currentHeight / this->height())), QPoint(int(frames[i].end.x() * currentWidth / this->width()), int(frames[i].end.y() * currentHeight / this->height()))));
+            painter.drawText(QPoint(qMax(int(frames[i].begin.x() * currentWidth / this->width()), int(frames[i].end.x() * currentWidth / this->width())), qMin(int(frames[i].begin.y() * currentHeight / this->height()), int(frames[i].end.y() * currentHeight / this->height()))), frames[i].value);
+        }
+    }
+    QByteArray byteArray;
+    QBuffer buffer(&byteArray);
+    buffer.open(QIODevice::WriteOnly);
+    currentPixmap.save(&buffer, "JPG");
+    buffer.close();
+    QJsonArray imgs;
+    QJsonObject jsonObject;
+    jsonObject.insert("imgData", QString::fromLocal8Bit(byteArray.toBase64()));
+    jsonObject.insert("photoName", QString());
+    imgs.push_back(jsonObject);
+    json.insert("imgs", imgs);
 
     qDebug() << "json: " << json;
 
@@ -271,6 +261,21 @@ void extendQLabel::setCurrentId(QString str)
     currentId = str;
 }
 
+void extendQLabel::setCurrentPixmap(QPixmap pixmap)
+{
+    currentPixmap = pixmap;
+}
+
+void extendQLabel::setCurrentWidth(int width)
+{
+    currentWidth = width;
+}
+
+void extendQLabel::setCurrentHeight(int height)
+{
+    currentHeight = height;
+}
+
 void extendQLabel::setRfid(QString str)
 {
     rfid = str;
@@ -287,6 +292,9 @@ void extendQLabel::setFrames()
         frames[i].valueId = 0;
         frames[i].isValid = false;
     }
+
+    currentWidth = 0;
+    currentHeight = 0;
 }
 
 bool extendQLabel::isFramesExists()

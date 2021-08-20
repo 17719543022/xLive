@@ -33,6 +33,12 @@ public:
 
     void setCurrentId(QString str);
 
+    void setCurrentPixmap(QPixmap pixmap);
+
+    void setCurrentWidth(int width);
+
+    void setCurrentHeight(int height);
+
     void setRfid(QString str);
 
     void setFrames();
@@ -74,6 +80,9 @@ private:
     Frame frames[10];
     QString currentPath;
     QString currentId;
+    QPixmap currentPixmap;
+    int currentWidth;
+    int currentHeight;
     QString rfid;
     QString value;
     int valueId;
