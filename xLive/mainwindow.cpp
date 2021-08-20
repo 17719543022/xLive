@@ -387,8 +387,6 @@ void MainWindow::on_NewOpenLuggageResponse(QNetworkReply* reply)
         if (err.error == QJsonParseError::NoError) {
             QJsonObject obj = document.object();
 
-            qDebug() << "on_NewOpenLuggageResponse: " << obj;
-
             if (obj.contains("results")) {
                 QJsonValue results = obj.value("results");
                 if (results.isArray()) {
@@ -508,6 +506,10 @@ void MainWindow::on_uploadedSuccess(QString newPath)
     ui->widgetDlg->show();
 
     QPixmap currentPixmap = getQPixmapSync(newPath);
+    ui->labelXImage->setCurrentWidth(currentPixmap.width());
+    ui->labelXImage->setCurrentHeight(currentPixmap.height());
+    ui->labelXImage->setCurrentPixmap(currentPixmap);
+
     currentPixmap = currentPixmap.scaled(ui->labelXImage->width()
                                          , ui->labelXImage->height()
                                          , Qt::IgnoreAspectRatio

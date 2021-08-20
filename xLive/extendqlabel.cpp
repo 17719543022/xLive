@@ -74,7 +74,6 @@ void extendQLabel::on_LoadResponse(QNetworkReply* reply)
 
         if (err.error == QJsonParseError::NoError) {
             QJsonObject obj = document.object();
-            qDebug() << "document: " << document;
 
             dictoryArray = obj.value("results").toObject().value("9").toArray();
 
@@ -152,6 +151,8 @@ void extendQLabel::on_hazardousResponse(QNetworkReply *reply)
 
         QJsonParseError err;
         document = QJsonDocument::fromJson(all, &err);
+
+        qDebug() << "on_hazardousResponse: " << document;
 
         if (document.object().value("status").toInt() == 0) {
             this->setFrames();
@@ -242,8 +243,6 @@ void extendQLabel::upLoad()
     imgs.push_back(jsonObject);
     json.insert("imgs", imgs);
 
-    qDebug() << "json: " << json;
-
     doc.setObject(json);
     QByteArray data = doc.toJson(QJsonDocument::Compact);
 
@@ -284,7 +283,7 @@ void extendQLabel::setCurrentId(QString str)
 
 void extendQLabel::setCurrentPixmap(QPixmap pixmap)
 {
-    currentPixmap = pixmap;
+    currentPixmap = pixmap.copy(0, 0, pixmap.width(), pixmap.height());
 }
 
 void extendQLabel::setCurrentWidth(int width)
