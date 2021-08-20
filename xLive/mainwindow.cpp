@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->tableWidgetRight, SIGNAL(cellClicked(int, int)), this, SLOT(on_rowClicked(int, int)));
     connect(ui->tableWidgetBottom, SIGNAL(cellClicked(int, int)), this, SLOT(on_columnClicked(int, int)));
     connect(ui->labelXImage, SIGNAL(uploadFailed()), this, SLOT(on_uploadFailed()));
-    connect(ui->labelXImage, SIGNAL(uploadSuccess()), this, SLOT(on_uploadedSuccess()));
+    connect(ui->labelXImage, SIGNAL(uploadSuccess(QString)), this, SLOT(on_uploadedSuccess(QString)));
     connect(timer, SIGNAL(timeout()), this, SLOT(on_pushButton_TimeOut()));
 }
 
@@ -492,13 +492,20 @@ void MainWindow::on_uploadFailed()
     ui->widgetDlg->show();
 }
 
-void MainWindow::on_uploadedSuccess()
+void MainWindow::on_uploadedSuccess(QString newPath)
 {
     ui->labelText->setText("危险品标记信息上传成功！");
     ui->pushButtonAccept->hide();
     ui->pushButtonReject->hide();
     ui->pushButtonConfirm->show();
     ui->widgetDlg->show();
+
+    QPixmap currentPixmap = getQPixmapSync(newPath);
+    currentPixmap = currentPixmap.scaled(ui->labelXImage->width()
+                                         , ui->labelXImage->height()
+                                         , Qt::IgnoreAspectRatio
+                                         , Qt::SmoothTransformation);
+    ui->labelXImage->setPixmap(currentPixmap);
 }
 
 void MainWindow::on_pushButtonClose_clicked()

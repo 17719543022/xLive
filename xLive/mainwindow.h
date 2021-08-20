@@ -51,7 +51,7 @@ private slots:
 
     void on_uploadFailed();
 
-    void on_uploadedSuccess();
+    void on_uploadedSuccess(QString newPath);
 
     void on_pushButtonClose_clicked();
 

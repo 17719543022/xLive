@@ -69,7 +69,7 @@ private slots:
 signals:
     void uploadFailed();
 
-    void uploadSuccess();
+    void uploadSuccess(QString newPath);
 
 private:
     bool isMousePressed;

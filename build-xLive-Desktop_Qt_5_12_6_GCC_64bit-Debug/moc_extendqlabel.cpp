@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_extendQLabel_t {
-    QByteArrayData data[10];
-    char stringdata0[119];
+    QByteArrayData data[11];
+    char stringdata0[127];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,17 +35,19 @@ QT_MOC_LITERAL(0, 0, 12), // "extendQLabel"
 QT_MOC_LITERAL(1, 13, 12), // "uploadFailed"
 QT_MOC_LITERAL(2, 26, 0), // ""
 QT_MOC_LITERAL(3, 27, 13), // "uploadSuccess"
-QT_MOC_LITERAL(4, 41, 7), // "on_Load"
-QT_MOC_LITERAL(5, 49, 15), // "on_LoadResponse"
-QT_MOC_LITERAL(6, 65, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(7, 80, 5), // "reply"
-QT_MOC_LITERAL(8, 86, 20), // "on_hazardousResponse"
-QT_MOC_LITERAL(9, 107, 11) // "actionsSlot"
+QT_MOC_LITERAL(4, 41, 7), // "newPath"
+QT_MOC_LITERAL(5, 49, 7), // "on_Load"
+QT_MOC_LITERAL(6, 57, 15), // "on_LoadResponse"
+QT_MOC_LITERAL(7, 73, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(8, 88, 5), // "reply"
+QT_MOC_LITERAL(9, 94, 20), // "on_hazardousResponse"
+QT_MOC_LITERAL(10, 115, 11) // "actionsSlot"
 
     },
     "extendQLabel\0uploadFailed\0\0uploadSuccess\0"
-    "on_Load\0on_LoadResponse\0QNetworkReply*\0"
-    "reply\0on_hazardousResponse\0actionsSlot"
+    "newPath\0on_Load\0on_LoadResponse\0"
+    "QNetworkReply*\0reply\0on_hazardousResponse\0"
+    "actionsSlot"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,22 +66,22 @@ static const uint qt_meta_data_extendQLabel[] = {
 
  // signals: name, argc, parameters, tag, flags
        1,    0,   44,    2, 0x06 /* Public */,
-       3,    0,   45,    2, 0x06 /* Public */,
+       3,    1,   45,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   46,    2, 0x08 /* Private */,
-       5,    1,   47,    2, 0x08 /* Private */,
-       8,    1,   50,    2, 0x08 /* Private */,
-       9,    0,   53,    2, 0x08 /* Private */,
+       5,    0,   48,    2, 0x08 /* Private */,
+       6,    1,   49,    2, 0x08 /* Private */,
+       9,    1,   52,    2, 0x08 /* Private */,
+      10,    0,   55,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    4,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 6,    7,
-    QMetaType::Void, 0x80000000 | 6,    7,
+    QMetaType::Void, 0x80000000 | 7,    8,
+    QMetaType::Void, 0x80000000 | 7,    8,
     QMetaType::Void,
 
        0        // eod
@@ -92,7 +94,7 @@ void extendQLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->uploadFailed(); break;
-        case 1: _t->uploadSuccess(); break;
+        case 1: _t->uploadSuccess((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 2: _t->on_Load(); break;
         case 3: _t->on_LoadResponse((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         case 4: _t->on_hazardousResponse((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
@@ -127,7 +129,7 @@ void extendQLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             }
         }
         {
-            using _t = void (extendQLabel::*)();
+            using _t = void (extendQLabel::*)(QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&extendQLabel::uploadSuccess)) {
                 *result = 1;
                 return;
@@ -183,9 +185,10 @@ void extendQLabel::uploadFailed()
 }
 
 // SIGNAL 1
-void extendQLabel::uploadSuccess()
+void extendQLabel::uploadSuccess(QString _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

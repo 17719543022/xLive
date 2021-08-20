@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[22];
-    char stringdata0[405];
+    QByteArrayData data[23];
+    char stringdata0[413];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -48,11 +48,12 @@ QT_MOC_LITERAL(13, 182, 25), // "on_NewOpenLuggageResponse"
 QT_MOC_LITERAL(14, 208, 27), // "on_pushButtonUpLoad_clicked"
 QT_MOC_LITERAL(15, 236, 15), // "on_uploadFailed"
 QT_MOC_LITERAL(16, 252, 18), // "on_uploadedSuccess"
-QT_MOC_LITERAL(17, 271, 26), // "on_pushButtonClose_clicked"
-QT_MOC_LITERAL(18, 298, 28), // "on_pushButtonConfirm_clicked"
-QT_MOC_LITERAL(19, 327, 27), // "on_pushButtonAccept_clicked"
-QT_MOC_LITERAL(20, 355, 27), // "on_pushButtonReject_clicked"
-QT_MOC_LITERAL(21, 383, 21) // "on_pushButton_TimeOut"
+QT_MOC_LITERAL(17, 271, 7), // "newPath"
+QT_MOC_LITERAL(18, 279, 26), // "on_pushButtonClose_clicked"
+QT_MOC_LITERAL(19, 306, 28), // "on_pushButtonConfirm_clicked"
+QT_MOC_LITERAL(20, 335, 27), // "on_pushButtonAccept_clicked"
+QT_MOC_LITERAL(21, 363, 27), // "on_pushButtonReject_clicked"
+QT_MOC_LITERAL(22, 391, 21) // "on_pushButton_TimeOut"
 
     },
     "MainWindow\0on_NewLeaveBeltXLive\0\0"
@@ -62,7 +63,8 @@ QT_MOC_LITERAL(21, 383, 21) // "on_pushButton_TimeOut"
     "on_NewLeaveBeltResponse\0QNetworkReply*\0"
     "reply\0on_NewOpenLuggageResponse\0"
     "on_pushButtonUpLoad_clicked\0on_uploadFailed\0"
-    "on_uploadedSuccess\0on_pushButtonClose_clicked\0"
+    "on_uploadedSuccess\0newPath\0"
+    "on_pushButtonClose_clicked\0"
     "on_pushButtonConfirm_clicked\0"
     "on_pushButtonAccept_clicked\0"
     "on_pushButtonReject_clicked\0"
@@ -93,12 +95,12 @@ static const uint qt_meta_data_MainWindow[] = {
       13,    1,  109,    2, 0x08 /* Private */,
       14,    0,  112,    2, 0x08 /* Private */,
       15,    0,  113,    2, 0x08 /* Private */,
-      16,    0,  114,    2, 0x08 /* Private */,
-      17,    0,  115,    2, 0x08 /* Private */,
-      18,    0,  116,    2, 0x08 /* Private */,
-      19,    0,  117,    2, 0x08 /* Private */,
-      20,    0,  118,    2, 0x08 /* Private */,
-      21,    0,  119,    2, 0x08 /* Private */,
+      16,    1,  114,    2, 0x08 /* Private */,
+      18,    0,  117,    2, 0x08 /* Private */,
+      19,    0,  118,    2, 0x08 /* Private */,
+      20,    0,  119,    2, 0x08 /* Private */,
+      21,    0,  120,    2, 0x08 /* Private */,
+      22,    0,  121,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -110,7 +112,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, 0x80000000 | 11,   12,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   17,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -135,7 +137,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->on_NewOpenLuggageResponse((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         case 7: _t->on_pushButtonUpLoad_clicked(); break;
         case 8: _t->on_uploadFailed(); break;
-        case 9: _t->on_uploadedSuccess(); break;
+        case 9: _t->on_uploadedSuccess((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 10: _t->on_pushButtonClose_clicked(); break;
         case 11: _t->on_pushButtonConfirm_clicked(); break;
         case 12: _t->on_pushButtonAccept_clicked(); break;

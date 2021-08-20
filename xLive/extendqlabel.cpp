@@ -153,11 +153,11 @@ void extendQLabel::on_hazardousResponse(QNetworkReply *reply)
         QJsonParseError err;
         document = QJsonDocument::fromJson(all, &err);
 
-        if (document.object().value("msg").toString() == "success") {
+        if (document.object().value("status").toInt() == 0) {
             this->setFrames();
             update();
 
-            emit this->uploadSuccess();
+            emit this->uploadSuccess(document.object().value("newPhotoPath").toString());
         }
     }
 }
@@ -221,6 +221,9 @@ void extendQLabel::upLoad()
     QPainter painter(&currentPixmap);
     painter.begin(&currentPixmap);
     painter.setPen(QPen(Qt::red, 2));
+    QFont font;
+    font.setPointSize(20);
+    painter.setFont(font);
     for (int i = 0; i < 10; i++) {
         if (frames[i].isValid) {
             painter.drawRect(QRect(QPoint(int(frames[i].begin.x() * currentWidth / this->width()), int(frames[i].begin.y() * currentHeight / this->height())), QPoint(int(frames[i].end.x() * currentWidth / this->width()), int(frames[i].end.y() * currentHeight / this->height()))));
@@ -350,6 +353,9 @@ void extendQLabel::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
     painter.setPen(QPen(Qt::red, 2));
+    QFont font;
+    font.setPointSize(17);
+    painter.setFont(font);
 
     if (isMousePressed)
     {
